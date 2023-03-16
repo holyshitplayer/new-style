@@ -1,0 +1,45 @@
+.code-block
+    background-color: #282A36
+    padding: 16px
+    border-radius: 8px
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15)
+    position: relative
+    .circles
+        display: flex
+        gap: 6px
+        margin-bottom: 16px
+    .circle
+        height: 16px
+    .copy-button
+        position: absolute
+        right: 16px
+        top: 16px
+        width: 32px
+        height: 32px
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 8px
+        background-color: rgba(255,255,255,.1)
+        transition: background-color .15s ease
+        &:hover
+            background-color: rgba(255,255,255,.15)
+        &:active
+            background-color: rgba(255,255,255,.09)
+        img
+            display: block
+            height: 14px
+    .code
+        font-size: 16px
+        font-family: monospace
+        line-height: 20px
+    .css-selector
+        color: #EEEBFF
+    .css-symbol, .css-comment
+        color: #6C6783
+    .css-property
+        color: #9A86FD
+    .css-value
+        color: #FFCC99
+    .css-value-string
+        color: #FFB870

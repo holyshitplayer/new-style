@@ -49,3 +49,48 @@ html
     scroll-behavior: smooth
     color: #181818
     +regular
+
+p
+    line-height: 24px
+
+.container
+    margin: 0 32px
+
+.text-blue
+    color: #2172FF
+
+.button
+    display: inline-block
+    align-self: center
+    text-decoration: none
+    font-size: 14px
+    border-radius: 8px
+    background-color: #2172FF
+    color: #ffffff  
+    box-shadow: 0px 4px 16px 0px rgba(33, 114, 255, 0.5)
+    transition: background-color .3s ease
+    +semibold
+    &:hover
+        background-color: lighten(#2172FF, 5%)
+    &:active
+        background-color: darken(#2172FF, 5%)
+    &.big
+        padding: 14px 36px
+    &.small
+        padding: 12px 32px
+
+.multi-columns
+    display: flex
+    gap: 32px
+    &.two
+        .column
+            width: calc(50% - 16px)
+        &.tabs
+            .column:first-child
+                width: calc(100% / 3 - 16px)
+            .column:last-child
+                width: calc((100% / 3) * 2 - 16px)
+    .column
+        display: flex
+        flex-direction: column
+        gap: 8px

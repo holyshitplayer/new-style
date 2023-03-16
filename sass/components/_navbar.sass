@@ -1,0 +1,33 @@
+.navbar
+    display: flex
+    justify-content: space-between
+    align-items: center
+    height: 64px
+
+.header-logo
+    display: block
+    img
+        height: 48px
+        display: block
+        transition: transform .3s ease
+        transform-style: preserve-3d
+        &:hover
+            transform: translateY(-2px)
+
+.nav-links
+    display: flex
+    align-items: center
+    li
+        a
+            font-size: 14px
+            color: #555555
+            text-decoration: none
+            padding: calc((64px - 16.8px) / 2) 8px
+            transition: color .15s ease, background-color .15s ease
+            border-radius: 8px
+            +semibold
+            &.current
+                color: #181818
+        &:hover a
+            background-color: rgba(0,0,0,.03)
+            color: #181818
