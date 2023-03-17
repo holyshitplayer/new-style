@@ -1,8 +1,8 @@
 .tabs-keys
     display: flex
     flex-direction: column
-    gap: 16px
-    
+    gap: 8px
+
 .tabs-key
     padding: 16px 16px 16px 22px
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1)
@@ -24,9 +24,9 @@
         border-top-left-radius: 8px
         border-bottom-left-radius: 8px
         background-color: #999999
-        transition: background-color .15s 
+        transition: background-color .15s
     &:hover, &.selected
-        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15)
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2)
         &::before
             background-color: #2172FF
 
@@ -43,5 +43,276 @@
     flex-direction: column
     align-items: center
     gap: 16px
+    height: 100%
+    padding: 16px
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15)
+    border-radius: 8px
     &.selected
         display: flex
+
+.flexbox-schema
+    display: flex
+    justify-content: space-between
+    flex-wrap: wrap
+    gap: 16px
+    width: 100%
+    flex: 1
+    div
+        background-color: rgba(0, 0, 0, .15)
+        border-radius: 8px
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1)
+        transition: background-color .15s, box-shadow .15s ease
+        &:hover
+            background-color: rgba(0, 0, 0, .2)
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2)
+        &:nth-child(1)
+            width: calc(10% - 32px / 3)
+        &:nth-child(2)
+            width: calc(60% - 32px / 3)
+        &:nth-child(3)
+            width: calc(10% - 32px / 3)
+        &:nth-child(4)
+            width: calc(60% - 32px / 3)
+        &:nth-child(5)
+            width: calc(10% - 32px / 3)
+        &:nth-child(6)
+            width: calc(20% - 32px / 3)
+        &:nth-child(7)
+            width: calc(10% - 32px / 3)
+        &:nth-child(8)
+            width: calc(20% - 32px / 3)
+        &:nth-child(9)
+            width: calc(60% - 32px / 3)
+        &:nth-child(10)
+            width: calc(20% - 64px / 5)
+        &:nth-child(11)
+            width: calc(10% - 64px / 5)
+        &:nth-child(12)
+            width: calc(20% - 64px / 5)
+        &:nth-child(13)
+            width: calc(10% - 64px / 5)
+        &:nth-child(14)
+            width: calc(20% - 64px / 5)
+        &:nth-child(15)
+            width: calc(25% - 48px / 4)
+        &:nth-child(16)
+            width: calc(25% - 48px / 4)
+        &:nth-child(17)
+            width: calc(25% - 48px / 4)
+        &:nth-child(18)
+            width: calc(25% - 48px / 4)
+
+.grid-layout-schema
+    width: 100%
+    height: 100%
+    display: grid
+    grid-template-columns: repeat(6, [col] 1fr)
+    grid-template-rows: repeat(4, [row] 1fr)
+    grid-template-areas: "small1 big1 big1 big1 medium1 medium1" "small2 big1 big1 big1 medium2 medium2" "small3 small4 medium3 medium3 small5 small6" "medium4 medium4 wide1 wide1 wide1 small7"
+    gap: 16px
+    div
+        background-color: rgba(0, 0, 0, .15)
+        border-radius: 8px
+        box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1)
+        transition: background-color .15s, box-shadow .15s ease
+        &:hover
+            background-color: rgba(0, 0, 0, .2)
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2)
+        &:nth-child(1)
+            grid-area: small1
+        &:nth-child(2)
+            grid-area: small2
+        &:nth-child(3)
+            grid-area: big1
+        &:nth-child(4)
+            grid-area: medium1
+        &:nth-child(5)
+            grid-area: medium2
+        &:nth-child(6)
+            grid-area: small3
+        &:nth-child(7)
+            grid-area: small4
+        &:nth-child(8)
+            grid-area: medium3
+        &:nth-child(9)
+            grid-area: small5
+        &:nth-child(10)
+            grid-area: small6
+        &:nth-child(11)
+            grid-area: medium4
+        &:nth-child(12)
+            grid-area: wide1
+        &:nth-child(13)
+            grid-area: small7
+
+.animation-schema
+    display: flex
+    justify-content: center
+    align-items: center
+    width: 100%
+    height: 100%
+    div
+        width: 64px
+        height: 64px
+        border-radius: 8px
+        background-color: #f0f0f0
+        box-shadow: 0 0 0 #cccccc, 0 0 0 #ffffff, 8px 8px 8px #cccccc inset, -8px -8px 8px #ffffff inset
+        animation: anime 3s cubic-bezier(0.16, 1, 0.3, 1) 1s infinite alternate
+
+    @keyframes anime
+        0%
+            width: 64px
+            height: 64px
+            background: #f0f0f0
+            box-shadow: 0 0 0 #cccccc, 0 0 0 #ffffff, 8px 8px 8px #cccccc inset, -8px -8px 8px #ffffff inset
+
+        25%
+            width: 64px
+            height: 64px
+            background: #f8f8f8
+            box-shadow: 8px 8px 8px #cccccc, 8px 8px 8px #ffffff, 0 0 0 #cccccc inset, 0 0 0 #ffffff inset
+
+        50%
+            width: 64px
+            height: 256px
+            background: #f8f8f8
+            box-shadow: 8px 8px 8px #cccccc, 8px 8px 8px #ffffff, 0 0 0 #cccccc inset, 0 0 0 #ffffff inset
+
+        100%
+            width: 512px
+            height: 256px
+            background: #fafafa
+            box-shadow: 24px 24px 24px #cccccc, 0 0 0 #ffffff, 0 0 0 #cccccc inset, 2px 2px 2px #ffffff inset
+
+.shadows-schema
+    width: 100%
+    height: 100%
+    display: grid
+    grid-template-columns: repeat(4, [col] 1fr)
+    grid-template-rows: repeat(3, [row] 1fr)
+    gap: 16px
+    div
+        background-color: #ffffff
+        border-radius: 8px
+        transition: box-shadow .15s ease
+        &:nth-child(1)
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+            &:hover
+                box-shadow: rgba(0, 0, 0, 0.45) 0px 5px 15px
+        &:nth-child(2)
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+            &:hover
+                box-shadow: rgba(0, 0, 0, 0.34) 0px 3px 8px
+        &:nth-child(3)
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px
+            &:hover
+                box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px
+        &:nth-child(4)
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px
+            &:hover
+                box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px
+        &:nth-child(5)
+            box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px
+            &:hover
+                box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 3px 0px, rgba(27, 31, 35, 0.25) 0px 0px 0px 1px
+        &:nth-child(6)
+            box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px
+            &:hover
+                box-shadow: rgba(0, 0, 0, 0.08) 0px 6px 24px 0px, rgba(0, 0, 0, 0.15) 0px 0px 0px 1px
+        &:nth-child(7)
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px
+            &:hover
+                box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 36px 0px, rgba(0, 0, 0, 0.1) 0px 0px 0px 1px
+        &:nth-child(8)
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px
+            &:hover
+                box-shadow: rgba(50, 50, 93, 0.35) 0px 2px 5px -1px, rgba(0, 0, 0, 0.4) 0px 1px 3px -1px
+        &:nth-child(9)
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px
+            &:hover
+                box-shadow: rgba(50, 50, 93, 0.35) 0px 6px 12px -2px, rgba(0, 0, 0, 0.4) 0px 3px 7px -3px
+        &:nth-child(10)
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px
+            &:hover
+                box-shadow: rgba(50, 50, 93, 0.35) 0px 50px 100px -20px, rgba(0, 0, 0, 0.4) 0px 30px 60px -30px
+        &:nth-child(11)
+            box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px
+            &:hover
+                box-shadow: rgba(0, 0, 0, 0.18) 0px 1px 3px, rgba(0, 0, 0, 0.32) 0px 1px 2px
+        &:nth-child(12)
+            box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset
+            &:hover
+                box-shadow: rgb(204, 219, 232) 3px 3px 12px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 12px 1px inset
+
+.transform-schema
+    width: 100%
+    height: 100%
+    display: flex
+    justify-content: space-around
+    align-items: center
+    gap: 16px
+    div
+        border-radius: 8px
+        width: 256px
+        height: 192px
+        &:nth-child(1)
+            background-color: #f9f9f9
+            transform: rotateX(51deg) rotateZ(43deg)
+            transform-style: preserve-3d
+            border-radius: 32px
+            box-shadow: 1px 1px 0 1px #f9f9fb, -1px 0 28px 0 rgba(34, 33, 81, 0.01), 28px 28px 28px 0 rgba(34, 33, 81, 0.25)
+            transition: transform .4s ease-in-out, box-shadow .4s ease-in-out
+            &:hover
+                transform: translate3d(0px, -16px, 0px) rotateX(51deg) rotateZ(43deg)
+                box-shadow: 1px 1px 0 1px #f9f9fb, -1px 0 28px 0 rgba(34, 33, 81, 0.01), 54px 54px 28px -10px rgba(34, 33, 81, 0.15)
+        &:nth-child(2)
+            transform: perspective(800px) rotateY(25deg) scale(0.9) rotateX(10deg)
+            background-color: rgba(0, 0, 0, .15)
+            box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1)
+            opacity: 0.75
+            transition: transform 0.6s ease, opacity .6s ease
+            &:hover
+                transform: perspective(800px) rotateY(-15deg) translateY(-50px) rotateX(10deg) scale(1)
+                opacity: 1
+
+.media-queries-schema
+    display: flex
+    justify-content: space-between
+    align-items: center
+    gap: 16px
+    width: 100%
+    height: 100%
+    .mq-schema-part
+        height: 100%
+        border-radius: 8px
+        display: flex
+        flex-direction: column
+        align-items: center
+        gap: 8px
+        &:nth-child(1)
+            width: 50%
+        &:nth-child(2)
+            width: 30%
+        &:nth-child(3)
+            width: 20%
+        .mq-schema-divs
+            width: 100%
+            height: 100%
+            display: flex
+            justify-content: space-between
+            gap: 8px
+            div
+                width: 100%
+                height: 100%
+                background-color: rgba(0, 0, 0, .15)
+                border-radius: 8px
+                box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1)
+                transition: background-color .15s, box-shadow .15s ease
+                &:hover
+                    background-color: rgba(0, 0, 0, .2)
+                    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2)
+        p
+            font-size: 12px
+            text-transform: uppercase
+            letter-spacing: 1px
+            +bold
