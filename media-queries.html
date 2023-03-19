@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Медіа-запити</title>
+    <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <header class="header small">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="flexbox.html">Flexbox</a></li>
+                    <li><a href="grid.html">Grid Layout</a></li>
+                    <li><a href="animations.html">Анімації</a></li>
+                    <li><a href="shadows.html">Тіні</a></li>
+                    <li><a href="transform.html">Трансформації</a></li>
+                    <li><a href="media-queries.html">Медіа-запити</a></li>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1 class="page-header small">Медіа-запити</h1>
+                <p class="page-description">
+                    Підтримуйте однаковий рівень користувацького досвіду для різних пристроїв.
+                    <br>
+                    Змінюйте вигляд сторінки в залежності від розміру екрану.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Коротко про Медіа-запити</h3>
+            </div>
+            <div class="section-content">
+                <p>CSS Медіа-запити - <span class="code-snippet">@media</span> - дозволяють стилізувати кілька версій одного сайту залежно від типу пристрою, на якому переглядається макет/сайт. Іншими словами, це конструкції, які дозволяють вказати, виходячи з певних умов, які стилі слід використовувати на веб-сторінці, а які ні.</p>
+                <p>Мета медіа-запитів - допомогти розробникам створювати адаптивні макети. Адаптивний макет означає, що він адаптується до ширини екрану пристрою.</p>
+                <p>Усі адаптивні макети починаються на рівні області перегляду, а саме <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag" target="_blank" rel="noopener noreferrer">метатегу області перегляду</a>. Цей тег повідомляє браузеру, що ширина видимої області макета повинна дорівнювати ширині пристрою.</p>
+                <p>Це значення не залежить від фактичної роздільної здатності екрана; натомість воно призначене для того, щоб адаптивний дизайн веб-сайту відображався однаково на всіх пристроях, незалежно від щільності пікселів на екрані. Іншими словами, він зіставляє CSS з фізичною роздільною здатністю веб-сторінки.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="html-symbol">&lt;</span><span class="html-element">meta</span> <span class="html-property">name</span><span class="html-symbol">="</span><span class="html-value-string">viewport</span><span class="html-symbol">"</span> <span class="html-property">content</span><span class="html-symbol">="</span><span class="html-value-string">width=device-width, initial-scale=1</span><span class="html-symbol">"&gt;</span>
+</pre>
+                </div>
+                <p>Ось ключові відмінності між <span class="code-snippet">Viewport</span> та Медіа-запитами:</p>
+                <ul>
+                    <li>При налаштуванні адаптивності через область перегляду ми можемо налаштувати стиль відповідно до області перегляду пристрою. Стилі за допомогою CSS залишаються незмінними; область перегляду не має жодних змін у дизайні.</li>
+                    <li>Медіа-запити, однак, мають іншу функцію. Вони допомагають налаштувати наш стиль відповідно до обмежень, встановлених розміром екрану. Зміни дизайну за допомогою медіа-запитів є кастомними і відображаються залежно від поточного розміру екрану.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Синтаксис @media</h3>
+            </div>
+            <div class="section-content">
+                <p>Створення медіа-запиту починається з ключового слова <span class="code-snippet">@media</span>, за яким слідує одна або кілька умов. Умовою може бути тип пристрою або вимога до певної характеристики пристрою. Вимога до певної характеристики записується в круглих дужках.</p>
+                <p>Об'єднання декількох умов здійснюється за допомогою логічних операторів.</p>
+                <p>Після створення запиту <span class="code-snippet">@media</span> зазначені в ньому стилі будуть застосовані лише тоді, коли кінцевий результат функції повернеться як <span class="code-snippet">true</span>.</p>
+                <p>Ось приклад медіа-запиту з однією умовою:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">screen</span> <span class="css-symbol">{</span>
+    <span class="css-comment">/* стиль буде застосовано до будь-якого пристрою з "екраном" */.</span>
+<span class="css-symbol">}</span>
+
+<span class="css-comment">/* це дозволяє встановити інший шрифт для @media print - наприклад */.</span>
+<span class="css-function">@media</span> <span class="css-animation">screen</span> <span class="css-symbol">{</span>
+    <span class="css-selector">*</span> <span class="css-symbol">{</span> <span class="css-property">font-family</span><span class="css-symbol">:</span> <span class="css-value">Georgia</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ось приклад медіа-запиту з кількома умовами:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(min-width: 570px) and (max-width: 768px)</span> <span class="css-symbol">{</span>
+    <span class="css-comment">...</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>У наведеному вище прикладі стиль буде застосовано лише до меншого пристрою, який відповідає параметрам мінімальної ширини області перегляду 570 пікселів і максимальної - 768 пікселів.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Використання медіа-запитів поза CSS</h3>
+            </div>
+            <div class="section-content">
+                <p>Медіа-запити - це властивість CSS, але вони часто використовуються як з JavaScript, так і з HTML-документами, коли використовуються елементи <span class="code-snippet">&lt;link&gt;</span> для визначення таблиць стилів.</p>
+                <p>Якщо мова йде про HTML, щоразу, коли ви використовуєте елемент <span class="code-snippet">&lt;link&gt;</span> для посилання на таблицю стилів, ви можете додати атрибут <span class="code-snippet">media="..."</span>, який підтримує фактичні медіа-властивості CSS.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-comment">/* example */</span>
+
+<span class="html-symbol">&lt;</span><span class="html-element">link</span> <span class="html-property">href</span><span class="html-symbol">="</span><span class="html-value-string">mobile.css</span><span class="html-symbol">"</span> <span class="html-property">rel</span><span class="html-symbol">="</span><span class="html-value-string">stylesheet</span><span class="html-symbol">"</span> <span class="html-property">media</span><span class="html-symbol">="</span><span class="html-value-string">screen and (max-width: 600px)</span><span class="html-symbol">"&gt;</span>
+
+<span class="css-comment">/* detect OS theme preference directly */</span>
+
+<span class="html-symbol">&lt;</span><span class="html-element">link</span> <span class="html-property">href</span><span class="html-symbol">="</span><span class="html-value-string">css/light.css</span><span class="html-symbol">"</span> <span class="html-property">rel</span><span class="html-symbol">="</span><span class="html-value-string">stylesheet</span><span class="html-symbol">"</span> <span class="html-property">media</span><span class="html-symbol">="</span><span class="html-value-string">(prefers-color-scheme: light)</span><span class="html-symbol">"&gt;</span>
+<span class="html-symbol">&lt;</span><span class="html-element">link</span> <span class="html-property">href</span><span class="html-symbol">="</span><span class="html-value-string">css/dark.css</span><span class="html-symbol">"</span> <span class="html-property">rel</span><span class="html-symbol">="</span><span class="html-value-string">stylesheet</span><span class="html-symbol">"</span> <span class="html-property">media</span><span class="html-symbol">="</span><span class="html-value-string">(prefers-color-scheme: dark)</span><span class="html-symbol">"&gt;</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Типи пристроїв для медіа-запитів</h3>
+            </div>
+            <div class="section-content">
+                <p>Існує чотири типи пристроїв, які ми можемо вказати:</p>
+                <ul>
+                    <li><span class="code-snippet">all</span>: медіа-вираз буде застосовано до всіх пристроїв. Якщо ви не вкажете жодного типу, за замовчуванням буде застосовано цей.</li>
+                    <li><span class="code-snippet">print</span>: стилі в межах цього медіа-виразу застосовуються під час друку на принтері або експорту до PDF, у тому числі в режимі попереднього перегляду документа.</li>
+                    <li><span class="code-snippet">screen</span>: для пристроїв з екраном.</li>
+                    <li><span class="code-snippet">speech</span>: для мовних синтезаторів (поки що не підтримується жодним браузером).</li>
+                </ul>
+                <p>У більшості випадків, коли ви пишете стилі тільки для екрану, вам не потрібно вказувати <span class="code-snippet">screen</span> або <span class="code-snippet">all</span>. Реальне практичне застосування має лише тип друку.</p>
+                <p>Окрім типів пристроїв, існують також їхні характеристики. Вони можуть варіюватися від простих налаштувань на основі пристрою до специфічних налаштувань користувача, таких як "віддає перевагу темним кольорам".</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Логічні оператори</h3>
+            </div>
+            <div class="section-content">
+                <p>При написанні медіа-запитів можна використовувати чотири різні логічні оператори:</p>
+                <ul>
+                    <li><span class="code-snippet">,</span></li>
+                    <li><span class="code-snippet">and</span></li>
+                    <li><span class="code-snippet">not</span></li>
+                    <li><span class="code-snippet">only</span> (застарілий)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">and</h3>
+            </div>
+            <div class="section-content">
+                <p>Цей оператор використовується для об'єднання декількох умов. У цьому випадку їхня логіка буде виконана, коли кожна з них буде <span class="code-snippet">true</span>.</p>
+                <p>Наприклад, наступний запит <span class="code-snippet">@media</span> буде застосовано, тільки якщо виконано всі три умови (<span class="code-snippet">screen</span>, <span class="code-snippet">width >= 1280px</span> і орієнтація <span class="code-snippet">landscape</span>):</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">screen and (min-width: 1280px) and (orientation: landscape)</span> <span class="css-symbol">{</span>
+    <span class="css-comment">...</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">, (кома)</h3>
+            </div>
+            <div class="section-content">
+                <p>Цей оператор визначає використання стилів, коли потрібно виконати лише одну із зазначених умов.</p>
+                <p>У цьому прикладі стилі будуть застосовані до сторінки у двох випадках: <span class="code-snippet">width >= 524px</span> або орієнтація <span class="code-snippet">portrait</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(min-width: 524px), (orientation: portrait)</span> <span class="css-symbol">{</span>
+    <span class="css-comment">...</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">not</h3>
+            </div>
+            <div class="section-content">
+                <p>Оператор <span class="code-snippet">not</span> використовується для заперечення.</p>
+                <p>При використанні <span class="code-snippet">not</span> з <span class="code-snippet">and</span> заперечення працює для всього медіа-запиту. У цьому випадку при вказівці <span class="code-snippet">not</span> - не потрібно вказувати тип пристрою.</p>
+                <p>Наприклад, застосовувати стилі лише тоді, коли це <span class="code-snippet">не</span> (<span class="code-snippet">screen</span> і <span class="code-snippet">width >= 418px</span> і <span class="code-snippet">height >= 724px</span>).</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">not screen and (min-width: 418px) and (min-height: 724px)</span> <span class="css-symbol">{</span>
+    <span class="css-comment">...</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>При використанні <span class="code-snippet">not</span> у виразі з комами додається заперечення лише для цієї частини.</p>
+                <p>Наприклад, застосовувати стилі, коли виконується наступна умова: <span class="code-snippet">not a screen or not width >= 418px</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">not screen, not (min-width: 418px)</span> <span class="css-symbol">{</span>
+    <span class="css-comment">...</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Особливості (характеристики) медіа-запитів</h3>
+            </div>
+            <div class="section-content">
+                <p>Цей розділ продовжить розділ про типи пристроїв, який ми розглядали раніше. Багато з "характерних вимог" або "медіа-функцій" є дуже специфічними і багато в чому непрактичними для повсякденної роботи розробника. Замість цього, цей розділ зосередиться на найпопулярніших типах медіа-запитів, які корисні в повсякденній роботі з CSS.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">width</h3>
+            </div>
+            <div class="section-content">
+                <p>Характеристика <span class="code-snippet">width</span> медіа дозволяє вам задати, щоб ширина області перегляду дорівнювала певному значенню.</p>
+                <p>Наприклад, застосувати CSS лише до області перегляду з <span class="code-snippet">width: 316px;</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(width: 316px)</span> <span class="css-symbol">{</span> <span class="css-comment">...</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ви можете використовувати <span class="code-snippet">min-width</span>, а потім визначити діапазон з <span class="code-snippet">max-width</span>.</p>
+                <p>Наприклад, <span class="code-snippet">@media</span> для ширини області перегляду від 586px до 1280px:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(min-width: 586px) and (max-width: 1279.98px)</span> <span class="css-symbol">{</span> <span class="css-comment">...</span> <span class="css-symbol">}</span>
+
+<span class="css-comment">/* Іншими словами, цей запит не буде працювати для ширини більше 1280px. */</span>
+</pre>
+                </div>
+                <p>Для ширини більше 768px:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(min-width: 768px)</span> <span class="css-symbol">{</span> <span class="css-comment">...</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Якщо вам потрібно менше 1536px:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(max-width: 1535.98px)</span> <span class="css-symbol">{</span> <span class="css-comment">...</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">height</h3>
+            </div>
+            <div class="section-content">
+                <p>Ви можете використовувати <span class="code-snippet">height</span> та <span class="code-snippet">min-height</span>, щоб задати умови для висоти області перегляду.</p>
+                <p>Наприклад, <span class="code-snippet">@media</span> для висоти області перегляду більше 720px:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(min-height: 720px)</span> <span class="css-symbol">{</span> <span class="css-comment">...</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">orientation</h3>
+            </div>
+            <div class="section-content">
+                <p>За допомогою <span class="code-snippet">orientation</span> можна встановити певні стилі залежно від того, в якому режимі (альбомному чи книжковому) відображається сайт.</p>
+                <p>Наприклад, залежно від орієнтації вікна перегляду ви можете відображати різні зображення:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@media</span> <span class="css-animation">(orientation: landscape)</span> <span class="css-symbol">{</span>
+    <span class="css-selector">.featured-hero</span> <span class="css-symbol">{</span> <span class="css-property">background</span><span class="css-symbol">:</span> <span class="css-value">url(hero-l.png) no-repeat</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+
+<span class="css-function">@media</span> <span class="css-animation">(orientation: portrait)</span> <span class="css-symbol">{</span>
+    <span class="css-selector">.featured-hero</span> <span class="css-symbol">{</span> <span class="css-property">background</span><span class="css-symbol">:</span> <span class="css-value">url(hero-p.png) no-repeat</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">aspect-ratio</h3>
+            </div>
+            <div class="section-content">
+                <p>Характеристики <span class="code-snippet">aspect-ratio</span>, <span class="code-snippet">min-aspect-ratio</span>, <span class="code-snippet">max-aspect-ratio</span> дають змогу встановлювати стилі залежно від співвідношення сторін у вікні перегляду.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-comment">/* Мінімум */</span>
+<span class="css-function">@media</span> <span class="css-animation">(min-aspect-ratio: 9/16)</span> <span class="css-symbol">{</span>
+    <span class="css-selector">.featured-hero</span> <span class="css-symbol">{</span> <span class="css-property">background-color</span><span class="css-symbol">:</span> <span class="css-value">blue</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+
+<span class="css-comment">/* Максимум */</span>
+<span class="css-function">@media</span> <span class="css-animation">(max-aspect-ratio: 16/9)</span> <span class="css-symbol">{</span>
+    <span class="css-selector">.featured-hero</span> <span class="css-symbol">{</span> <span class="css-property">background-color</span><span class="css-symbol">:</span> <span class="css-value">red</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+
+<span class="css-comment">/* Точно */</span>
+<span class="css-function">@media</span> <span class="css-animation">(aspect-ratio: 1/1)</span> <span class="css-symbol">{</span>
+    <span class="css-selector">.featured-hero</span> <span class="css-symbol">{</span> <span class="css-property">background-color</span><span class="css-symbol">:</span> <span class="css-value">white</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">resolution</h3>
+            </div>
+            <div class="section-content">
+                <p>Характеристики <span class="code-snippet">resolution</span>, <span class="code-snippet">min-resolution</span> та <span class="code-snippet">max-resolution</span> можна використовувати, коли ви хочете встановити стилі залежно від щільності пікселів пристрою.</p>
+                <p>Наприклад, встановити інший розмір шрифту для пристроїв з щільністю пікселів на дюйм більше 150:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-comment">/* За замовчуванням */</span>
+<span class="css-selector">h2 </span> <span class="css-symbol">{</span>
+    <span class="css-property">font-size</span><span class="css-symbol">:</span> <span class="css-value">1.5rem</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-comment">/* Мінімальна роздільна здатність */</span>
+<span class="css-function">@media</span> <span class="css-animation">(min-resolution: 150dpi)</span> <span class="css-symbol">{</span>
+    <span class="css-selector">h2 </span> <span class="css-symbol">{</span>
+        <span class="css-property">font-size</span><span class="css-symbol">:</span> <span class="css-value">1.1rem</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.html" class="footer-logo"><img src="img/common/logo.svg" alt="logo"></a>
+        <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
