@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трансформації</title>
+    <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <header class="header small">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="flexbox.html">Flexbox</a></li>
+                    <li><a href="grid.html">Grid Layout</a></li>
+                    <li><a href="animations.html">Анімації</a></li>
+                    <li><a href="shadows.html">Тіні</a></li>
+                    <li><a href="transform.html">Трансформації</a></li>
+                    <li><a href="media-queries.html">Медіа-запити</a></li>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1 class="page-header small">Трансформації</h1>
+                <p class="page-description">
+                    3D-трансформації, зміни розміру, поворот та пересування елементів на сторінці.
+                    <br>
+                    Створюйте різні елементи, які змінюються за допомогою відмінних від стандартних трансформацій.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Коротко про Трансформації</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">transform</span> дозволяє візуально маніпулювати елементом, нахиляючи, обертаючи, перекладаючи або масштабуючи його:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">width</span><span class="css-symbol">:</span> <span class="css-value">20px</span><span class="css-symbol">;</span>
+    <span class="css-property">height</span><span class="css-symbol">:</span> <span class="css-value">20px</span><span class="css-symbol">;</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">scale(20)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Навіть із заявленими висотою і шириною, цей елемент тепер буде масштабовано в двадцять разів більше, ніж його початковий розмір:</p>
+                <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/team/css-tricks/pen/gpQYwO/d5d50055d95ceecbf94068e75a502c97" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+                <p>Якщо надати цій функції два значення, то вона розтягнеться по горизонталі на перше, а по вертикалі - на друге. У наступному прикладі елемент тепер буде вдвічі ширшим, але вдвічі меншим за висоту від початкового елемента:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">scale(2, .5)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Або ви можете бути більш конкретними, не використовуючи функцію стенографії:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">scaleX(2)</span><span class="css-symbol">;</span>
+<span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">scaleY(.5)</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <p>Але <span class="code-snippet">scale()</span> - це лише одна з багатьох доступних функцій перетворення.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Значення</h3>
+            </div>
+            <div class="section-content">
+                <ul>
+                    <li><span class="code-snippet">scale()</span>: впливає на розмір елемента. Це також стосується <span class="code-snippet">font-size</span>, <span class="code-snippet">padding</span>, <span class="code-snippet">height</span> та <span class="code-snippet">width</span> елемента. Це також скорочена функція для функцій <span class="code-snippet">scaleX</span> і <span class="code-snippet">scaleY</span>.</li>
+                    <li><span class="code-snippet">skewX()</span> та <span class="code-snippet">skewY()</span>: нахиляє елемент вліво або вправо, наприклад, перетворюючи прямокутник на паралелограм. <span class="code-snippet">skew()</span> - це скорочена функція, яка поєднує <span class="code-snippet">skewX()</span> і <span class="code-snippet">skewY</span>, приймаючи обидва значення.</li>
+                    <li><span class="code-snippet">translate()</span>: переміщує елемент убік або вгору і вниз.</li>
+                    <li><span class="code-snippet">rotate()</span>: повертає елемент за годинниковою стрілкою з поточного положення.</li>
+                    <li><span class="code-snippet">matrix()</span>: функція, яка, ймовірно, не призначена для написання вручну, але об'єднує всі перетворення в одне.</li>
+                    <li><span class="code-snippet">perspective()</span>: не впливає на сам елемент, але впливає на трансформації 3D-трансформацій нащадків, дозволяючи їм усім мати узгоджену перспективу глибини.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">skew</h3>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-comment">/* Точки нахилу вздовж осі x */</span>
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">skewX(25deg)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-comment">/* Точки нахилу вздовж осі y */</span>
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">skewY(25deg)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-comment">/* Точки нахилу вздовж осей x та y */</span>
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">skew(25deg, 25deg)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Функції перетворення <span class="code-snippet">skewX</span> і <span class="code-snippet">skewY</span> нахиляють елемент у той чи інший бік. Пам'ятайте: для нахилу елемента не існує властивості скорочення, тому вам доведеться використовувати обидві функції. У наведеному на <a href="https://codepen.io/team/css-tricks/pen/BNGMRy/cb9ab0a908241806e3eff88b57f15693" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> прикладі ми можемо нахилити квадрат розміром 100px x 100px вліво і вправо за допомогою <span class="code-snippet">skewX</span>:</p>
+                <p>У цьому на <a href="https://codepen.io/team/css-tricks/pen/jPQpzp/d7be823bca05649502f63fc8490c6d93" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> прикладі ми можемо нахилити елемент по вертикалі за допомогою <span class="code-snippet">skewY</span>:</p>
+                <p>Тепер використаємо <span class="code-snippet">skew()</span>, щоб об'єднати їх. <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/team/css-tricks/pen/povNBmQ" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">rotate</h3>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">rotate(25deg)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Це обертає елемент за годинниковою стрілкою від його початкової позиції, тоді як від'ємне значення обертає його в протилежному напрямку. Простий анімований приклад на <a href="https://codepen.io/team/css-tricks/pen/VLVBdK/d31be2118a19782d2c4fcfb048351ccf" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a>, де квадрат продовжує обертатися на 360 градусів кожні три секунди.</p>
+                <p>Ми також можемо використовувати функції <span class="code-snippet">rotateX</span>, <span class="code-snippet">rotateY</span> і <span class="code-snippet">rotateZ</span>, як на цьому прикладі на <a href="https://codepen.io/team/css-tricks/pen/MwzBzR/ebb6b5a5cec86aa04168f03e26c7501c" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+                <p>Тепер використаємо <span class="code-snippet">skew()</span>, щоб об'єднати їх. <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/team/css-tricks/pen/povNBmQ" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">translate</h3>
+            </div>
+            <div class="section-content">
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translate(20px, 10px)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ця функція перетворення переміщує елемент убік або вгору і вниз. Чому б просто не використати верхній/лівий/нижній/правий? Ну, іноді це трохи заплутано. Я б вважав це компонуванням/позиціонуванням (вони все одно краще підтримуються браузерами), а це - способом переміщення цих елементів в рамках переходу або анімації.</p>
+                <p>Це можуть бути будь-які значення довжини, наприклад, 10px або 2.4em. Одне значення перемістить елемент праворуч (від'ємні значення - ліворуч). Якщо вказати друге значення, то воно перемістить його вниз (від'ємні значення вгору). Або ви можете бути більш конкретними:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(value)</span><span class="css-symbol">;</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateY(value)</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <p>Важливо зазначити, що елемент, який використовує <span class="code-snippet">transform</span>, не спричиняє обтікання інших елементів. Скориставшись функцією <span class="code-snippet">translate</span> нижче і виштовхнувши зелений квадрат з його початкового положення, ми побачимо на цьому прикладі на <a href="https://codepen.io/team/css-tricks/pen/eNQdgJ/b9df78cff3ab6b64b5925b10c1e52d9e" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a>, що навколишній текст залишиться фіксованим на місці, так, ніби квадрат є блоковим елементом.</p>
+                <p>Варто також зазначити, що <span class="code-snippet">translate</span> буде апаратно прискорено, якщо ви захочете анімувати цю властивість, на відміну від <span class="code-snippet">position: absolute;</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Кілька значень transform</h3>
+            </div>
+            <div class="section-content">
+                <p>За допомогою списку, розділеного пробілами, ви можете додати кілька значень до властивості <span class="code-snippet">transform</span>:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.element</span> <span class="css-symbol">{</span>
+    <span class="css-property">width</span><span class="css-symbol">:</span> <span class="css-value">20px</span><span class="css-symbol">;</span>
+    <span class="css-property">height</span><span class="css-symbol">:</span> <span class="css-value">20px</span><span class="css-symbol">;</span>
+    <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">scale(20) skew(-20deg)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Варто зазначити, що існує порядок, в якому ці перетворення будуть виконуватися, у наведеному вище прикладі спочатку буде виконано "нахил", а потім елемент буде масштабовано.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">matrix</h3>
+            </div>
+            <div class="section-content">
+                <p>Функція матричного перетворення може бути використана для об'єднання всіх перетворень в одне. Це схоже на стенографію перетворень, тільки я не думаю, що вона призначена для написання вручну. Існують інструменти, такі як <a href="http://meyerweb.com/eric/tools/matrix/">The Matrix Resolutions</a>, які можуть перетворити групу перетворень в одне оголошення матриці. Можливо, у деяких ситуаціях це може зменшити розмір файлу, хоча такі недружні до автора мікрооптимізації, швидше за все, не варті вашого часу.</p>
+                <p>Для допитливих - ось це:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">rotate(45deg) translate(24px, 25px)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+                <p>...можна також представити як:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">matrix(0.7071067811865475, 0.7071067811865476, -0.7071067811865476, 0.7071067811865475, -0.7071067811865497, 34.648232278140824)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">3D-трансформації</h3>
+            </div>
+            <div class="section-content">
+                <p>Більшість з перерахованих вище властивостей мають 3D-версії.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">translate3d(x, y, z)</span><span class="css-symbol"></span>
+<span class="css-value">translateZ(z)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+                <p>.Третє значення в <span class="code-snippet">translate3d</span> або значення в <span class="code-snippet">translateZ</span> переміщує елемент до глядача, від'ємні значення - від нього.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">scale3d(sx, sy, sz)</span><span class="css-symbol"></span>
+<span class="css-value">scaleZ(sz)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+                <p>Третє значення у <span class="code-snippet">scale3d</span> або значення у <span class="code-snippet">scaleZ</span> впливає на масштабування вздовж осі z (наприклад, уявна лінія, що виходить прямо з екрана).</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">rotateX(value)</span><span class="css-symbol"></span>
+<span class="css-value">rotateY(value)</span><span class="css-symbol"></span>
+<span class="css-value">rotate3d(x, y, z)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+                <p><span class="code-snippet">rotateX</span> і <span class="code-snippet">rotateY</span> обертають елемент у тривимірному просторі навколо цих осей. <span class="code-snippet">rotate3d</span> дозволяє вказати точку у тривимірному просторі, навколо якої обертатиметься елемент.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">matrix3d(…)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+                <p>Спосіб програмно описати 3D-трансформацію в сітці 4×4. Ніхто ніколи не напише таке вручну, ніколи.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-value">perspective(value)</span><span class="css-symbol"></span>
+</pre>
+                </div>
+                <p>Це значення не впливає на сам елемент, але впливає на трансформації 3D-трансформацій нащадків, дозволяючи їм усім мати послідовну перспективу глибини.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.html" class="footer-logo"><img src="img/common/logo.svg" alt="logo"></a>
+        <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
