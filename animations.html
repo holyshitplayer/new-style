@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анімації</title>
+    <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <header class="header small">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="flexbox.html">Flexbox</a></li>
+                    <li><a href="grid.html">Grid Layout</a></li>
+                    <li><a href="animations.html">Анімації</a></li>
+                    <li><a href="shadows.html">Тіні</a></li>
+                    <li><a href="transforms.html">Трансформації</a></li>
+                    <li><a href="media-queries.html">Медіа-запити</a></li>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1 class="page-header small">Анімації</h1>
+                <p class="page-description">
+                    Підсилюйте взаємодії користувачів з вашим сайтом завдяки анімаціям.
+                    <br>
+                    Візуальне покращення елементів дизайну та створення незабутнього враження для відвідувачів.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Коротко про Анімації</h3>
+            </div>
+            <div class="section-content">
+                <p>За останні 10 років продуктивність браузерів значно зросла. Раніше було набагато складніше додавати інтерактивну анімацію на веб-сторінки через потенційні проблеми з рендерингом і продуктивністю. Але сьогодні CSS-анімації можна використовувати набагато вільніше, а синтаксис, як правило, набагато простіше вивчити порівняно з такими функціями CSS, як <a href="flexbox.html">Flexbox</a> або <a href="grid.html">Grid Layout</a>.</p>
+                <p>Існують різні функції, які є частиною специфікації анімації W3C CSS. Деякі з них простіші у використанні, ніж інші. У цьому підручнику з анімації ключових кадрів CSS ми розглянемо весь синтаксис, включаючи кожну з різних властивостей. Я додам інтерактивні демонстрації, які допоможуть вам зрозуміти, що можливо за допомогою CSS-анімації.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Синтаксис @keyframes</h3>
+            </div>
+            <div class="section-content">
+                <p>Кожна CSS-анімація складається з двох частин: одна або декілька властивостей <span class="code-snippet">animation-*</span> разом з набором ключових кадрів анімації, які визначаються за допомогою правила <span class="code-snippet">@keyframes</span> як правило. Давайте детально розглянемо, що входить до складу набору правил <span class="code-snippet">@keyframes</span>.</p>
+                <p>Синтаксис виглядає наступним чином:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@keyframes</span> <span class="css-animation">moveObject</span> <span class="css-symbol">{</span>
+    <span class="css-keyframe">0%</span> <span class="css-symbol">{</span>
+        <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(0)</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+
+    <span class="css-keyframe">50%</span> <span class="css-symbol">{</span>
+        <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(300px)</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+
+    <span class="css-keyframe">100%</span> <span class="css-symbol">{</span>
+        <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(300px) scale(1.5)</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Як показано тут, правило <span class="code-snippet">@keyframes</span> складається з трьох основних частин:</p>
+                <ul>
+                    <li>Правило <span class="code-snippet">@keyframes</span>, за яким слідує користувацьке ім'я анімації</li>
+                    <li>Набір фігурних дужок, що обгортають усі ключові кадри</li>
+                    <li>Один або кілька ключових кадрів, кожен з яких містить відсоток, за яким слідує набір правил, оточений фігурними дужками</li>
+                </ul>
+                <p>У цьому першому прикладі нашого підручника з CSS-анімації я визначив свою анімацію з назвою <span class="code-snippet">moveObject</span>. Це може бути будь-яка назва, чутлива до регістру, і вона має відповідати правилам створення користувацьких ідентифікаторів у CSS. Це користувацьке ім'я має збігатися з ім'ям, яке використовується у властивості <span class="code-snippet">animation-name</span> (про яку ми поговоримо пізніше).</p>
+                <p>У моєму прикладі ви помітите, що я використовував відсотки для визначення кожного ключового кадру в анімації. Якщо моя анімація містить ключові кадри, які дорівнюють <span class="code-snippet">0%</span> і <span class="code-snippet">100%</span>, я можу альтернативно використовувати ключові слова <span class="code-snippet">from</span> і <span class="code-snippet">to</span>:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-function">@keyframes</span> <span class="css-animation">moveObject</span> <span class="css-symbol">{</span>
+    <span class="css-keyframe">from</span> <span class="css-symbol">{</span>
+        <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(0)</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+
+    <span class="css-keyframe">50%</span> <span class="css-symbol">{</span>
+        <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(300px)</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+
+    <span class="css-keyframe">to</span> <span class="css-symbol">{</span>
+        <span class="css-property">transform</span><span class="css-symbol">:</span> <span class="css-value">translateX(300px) scale(1.5)</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/impressivewebs/pen/BamBEyZ" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+                <p>Дещо про синтаксис <span class="code-snippet">@keyframes</span>:</p>
+                <ul>
+                    <li>Ви можете розмістити набори правил для ключових кадрів у будь-якому порядку, і браузер все одно буде виконувати їх у порядку, визначеному їхнім відсотковим співвідношенням</li>
+                    <li>Ви можете опустити ключові кадри 0% і 100%, і браузер автоматично визначить їх за наявними стилями елемента, який анімується</li>
+                    <li>Якщо є повторювані ключові кадри з різними наборами правил (наприклад, два ключові кадри для 20% з різним значенням трансформації), браузер використовує останній з них</li>
+                    <li>Ви можете визначити кілька ключових кадрів в одному селекторі ключових кадрів через кому: <span class="code-snippet">10%, 30% { ... }</span></li>
+                    <li>Ключове слово <span class="code-snippet">!important</span> обнуляє будь-яке значення властивості, тому його не слід використовувати для властивості всередині набору правил ключового кадру</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-name</h3>
+            </div>
+            <div class="section-content">
+                <p>Як уже згадувалося, кожна CSS-анімація, яку ви створюєте, повинна мати ім'я, що з'являється в синтаксисі <span class="code-snippet">@keyframes</span>. Це ім'я має збігатися з ім'ям, визначеним за допомогою властивості <span class="code-snippet">animation-name</span>.</p>
+                <p>Використовуючи CSS з попередньої демонстрації, синтаксис виглядає наступним чином:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-name</span><span class="css-symbol">:</span> <span class="css-value">moveObject</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Знову ж таки, користувацьке ім'я, яке я визначив, має також існувати як ім'я для правила <span class="code-snippet">@keyframes</span> - інакше це ім'я нічого не робитиме. Ви можете думати про це як про виклик функції у JavaScript. Сама функція буде частиною коду <span class="code-snippet">@keyframes moveObject {}</span>, а виклик функції - <span class="code-snippet">animation-name: moveObject;</span>.</p>
+                <p>Деякі речі, які слід пам'ятати про <span class="code-snippet">animation-name</span>:</p>
+                <ul>
+                    <li>Початкове значення параметра <span class="code-snippet">animation-name</span> - <span class="code-snippet">none</span>, що означає, що жоден ключовий кадр не активний. Це можна використовувати як своєрідний "перемикач" для вимкнення анімації.</li>
+                    <li>Вибране вами ім'я враховує регістр і може містити літери, цифри, підкреслення та дефіси.</li>
+                    <li>Першим символом у назві має бути буква або дефіс, але тільки один дефіс.</li>
+                    <li>Ім'я не може бути зарезервованим словом, таким як <span class="code-snippet">unset</span>, <span class="code-snippet">initial</span> або <span class="code-snippet">inherit</span>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-duration</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">animation-duration</span>, як це не дивно, визначає кількість часу, необхідного для запуску анімації від початку до кінця. Це значення можна вказати у секундах або мілісекундах, як показано нижче:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-duration</span><span class="css-symbol">:</span> <span class="css-value">2s</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Вищесказане було б еквівалентно наступному:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-duration</span><span class="css-symbol">:</span> <span class="css-value">2000ms</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ви можете побачити властивість <span class="code-snippet">animation-duration</span> в дії в наступній демонстрації <a href="https://codepen.io/impressivewebs/pen/rNYNBwM" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a>. У цій демонстрації ви можете вибрати, як довго триватиме анімація.</p>
+                <p>Якщо ви використовуєте мале число разом з <span class="code-snippet">ms</span> для одиниці виміру, ви можете навіть не помітити жодного руху. Спробуйте встановити більше число, якщо ви використовуєте мілісекунди.</p>
+                <p>Кілька зауважень щодо використання <span class="code-snippet">animation-duration</span>:</p>
+                <ul>
+                    <li>Від'ємні значення є неприпустимими</li>
+                    <li>Пристрій має бути увімкнений, навіть якщо тривалість встановлена на <span class="code-snippet">0s</span> (початкове значення)</li>
+                    <li>Ви можете використовувати дробові значення (наприклад, <span class="code-snippet">0.8s</span>)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-timing-function</h3>
+            </div>
+            <div class="section-content">
+                <p>Функція <span class="code-snippet">animation-timing-function</span>, яка не настільки очевидна за своїм значенням, як попередні дві властивості, використовується для визначення способу виконання CSS-анімації. Можливо, це не найзрозуміліше пояснення, але синтаксис може допомогти прояснити ситуацію.</p>
+                <p>Декларація виглядає так:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-timing-function</span><span class="css-symbol">:</span> <span class="css-value">linear</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ця властивість приймає наступні значення ключових слів:</p>
+                <ul>
+                    <li><span class="code-snippet">ease</span> (початкове значення)</li>
+                    <li><span class="code-snippet">ease-in</span></li>
+                    <li><span class="code-snippet">ease-out</span></li>
+                    <li><span class="code-snippet">ease-in-out</span></li>
+                    <li><span class="code-snippet">linear</span></li>
+                    <li><span class="code-snippet">step-start</span></li>
+                    <li><span class="code-snippet">step-end</span></li>
+                </ul>
+                <p>Більшість значень відносно легко зрозуміти за їхніми назвами, але ви можете побачити, чим вони відрізняються на <a href="https://codepen.io/impressivewebs/pen/wvPvwYV" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+                <p>За допомогою клавіші вибору виберіть одне з семи значень ключового слова. Зверніть увагу, що значення <span class="code-snippet">ease-*</span> "полегшують" анімацію у різний спосіб. Лінійне значення є послідовним на всьому шляху.</p>
+                <p>Властивість <span class="code-snippet">animation-timing-function</span> також приймає наступні функції:</p>
+                <ul>
+                    <li><span class="code-snippet">cubic-bezier()</span>: приймає в якості аргументів чотири числові значення, відокремлені комами</li>
+                    <li><span class="code-snippet">steps()</span>: приймає як аргументи два значення, число та "член переходу", розділені комою</li>
+                </ul>
+                <p>Значення ключових слів <span class="code-snippet">step-start</span> і <span class="code-snippet">step-end</span> еквівалентні значенням <span class="code-snippet">steps(1, jump-start)</span> і <span class="code-snippet">steps(1, jump-end)</span> відповідно.</p>
+                <p>Що стосується <span class="code-snippet">cubic-bezier()</span>, то ви можете зрозуміти цю функцію трохи краще на <a href="https://codepen.io/impressivewebs/pen/mdqddON" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+                <p>Зверніть увагу, що демонстрація дозволяє вам задавати чотири аргументи у функції <span class="code-snippet">cubic-bezier()</span>. Два аргументи можуть бути від'ємними, а два обмежені десятковими значеннями від 0 до 1.</p>
+                <p>Функція <span class="code-snippet">steps()</span>, з іншого боку, приймає два аргументи:</p>
+                <ul>
+                    <li>Ціле число, що представляє рівні "зупинки" протягом одного циклу анімації.</li>
+                    <li>Необов'язкове ключове слово "jumpterm", яке визначає, чи анімація "затримується" на певних інтервалах</li>
+                </ul>
+                <p>Знову ж таки, ви можете зрозуміти як працює функція на <a href="https://codepen.io/impressivewebs/pen/VwrwMXX" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-iteration-count</h3>
+            </div>
+            <div class="section-content">
+                <p>У деяких випадках вам буде достатньо одного запуску анімації, але іноді ви хочете, щоб анімацію було запущено декілька разів. Властивість <span class="code-snippet">animation-iteration-count</span> дозволяє вам зробити це, прийнявши додатне число, що представляє кількість разів, яку ви хочете, щоб анімація була запущена:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-iteration-count</span><span class="css-symbol">:</span> <span class="css-value">3</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Початковим значенням для параметра <span class="code-snippet">animation-iteration-count</span> є 1, але ви також можете використати ключове слово <span class="code-snippet">infinite</span> (не потребує пояснень) або використати дробове значення. Дробове значення призведе до запуску анімації на половині шляху на дробовому прогоні:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-iteration-count</span><span class="css-symbol">:</span> <span class="css-value">3.5</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Вищенаведений код прокручує анімацію три з половиною рази. Тобто, три повні ітерації, за якими слідує одна фінальна ітерація, яка зупиняється рівно на півдорозі.</p>
+                <p>Ця властивість є найбільш корисною у поєднанні з властивістю <span class="code-snippet">animation-direction</span> (розглянутою далі), оскільки анімація, яка запускається лише з самого початку, не є надзвичайно корисною, якщо вона запускається більше одного разу.</p>
+                <p>Ви можете спробувати демонстрацію, яка дозволяє вибрати дробове значення для кількості ітерацій, щоб побачити ефект на <a href="https://codepen.io/impressivewebs/pen/qBVBozG" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+            </div>
+        </div>
+    </section>
+    
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-direction</h3>
+            </div>
+            <div class="section-content">
+                <p>Як згадувалося вище в цьому підручнику з CSS-анімації, властивість <span class="code-snippet">animation-direction</span> чудово працює в поєднанні з <span class="code-snippet">animation-iteration-count</span>. Властивість <span class="code-snippet">animation-direction</span> дозволяє вам визначити напрямок відтворення анімації. Синтаксис виглядає наступним чином:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-direction</span><span class="css-symbol">:</span> <span class="css-value">alternate</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ви можете встановити значення як одне з чотирьох ключових слів:</p>
+                <ul>
+                    <li><span class="code-snippet">normal</span>: анімація відтворюється вперед на першій ітерації (за замовчуванням)</li>
+                    <li><span class="code-snippet">reverse</span>: анімація відтворюється у зворотному порядку на першій ітерації</li>
+                    <li><span class="code-snippet">alternate</span>: анімація відтворюється вперед на першій ітерації, а потім чергується на наступних ітераціях</li>
+                    <li><span class="code-snippet">alternate-reverse</span>: те саме, що й <span class="code-snippet">alternate</span>, але відтворюється у зворотному порядку на першій ітерації</li>
+                </ul>
+                <p>Ви можете спробувати різні значення з різною кількістю ітерацій за допомогою інтерактивної демонстрації на <a href="https://codepen.io/impressivewebs/pen/PoOoaXL" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-play-state</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">animation-play-state</span> не дуже корисна у статичному середовищі CSS, але може стати в нагоді при написанні інтерактивних анімацій за допомогою JavaScript або навіть CSS.</p>
+                <p>Ця властивість приймає два значення: <span class="code-snippet">running</span> або <span class="code-snippet">paused</span>:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-play-state</span><span class="css-symbol">:</span> <span class="css-value">paused</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>За замовчуванням, будь-яка анімація перебуває у стані "запущена". Але ви можете використовувати JavaScript, щоб змінити значення властивості. Ви навіть можете використовувати інтерактивні CSS-функції, такі як <span class="code-snippet">:hover</span> або <span class="code-snippet">:focus</span>, щоб змінити стан анімації на "призупинений", що, по суті, заморозить анімацію, де б вона не знаходилася в поточній ітерації.</p>
+                <p>Інтерактивна демонстрація на <a href="https://codepen.io/impressivewebs/pen/LYOYBWg" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> має нескінченну анімацію з двома кнопками для "призупинення" та "відновлення" анімації.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-delay</h3>
+            </div>
+            <div class="section-content">
+                <p>Деякі анімації призначені для негайного початку анімації, тоді як інші можуть виграти від невеликої затримки перед першою ітерацією. Властивість <span class="code-snippet">animation-delay</span> дозволяє це зробити.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-delay</span><span class="css-symbol">:</span> <span class="css-value">4s</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Як і інші значення, що базуються на часі, ви можете встановити <span class="code-snippet">animation-delay</span> в секундах або мілісекундах. Ви також можете використовувати дробові значення.</p>
+                <p>Важливо зазначити, що затримка відбувається лише на першій ітерації, а не на кожній наступній. Ви можете спробувати це за допомогою інтерактивної демонстрації на <a href="https://codepen.io/impressivewebs/pen/vYWYajo" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+                <p>У демонстраційній версії ви можете змінювати значення ітерації, а також затримку, тому ви можете побачити, що затримка не впливає на наступні ітерації - тільки на першу.</p>
+                <p>Цікавим варіантом використання цієї властивості є від'ємне значення. Наприклад, використовуючи демонстрацію вище, спробуйте встановити <span class="code-snippet">animation-delay</span> на <span class="code-snippet">-0.5s</span>. Ви помітите, що від'ємна затримка працює майже так само, як рух вперед у машині часу - анімація починається на півдорозі, а не на початку.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation-fill-mode</h3>
+            </div>
+            <div class="section-content">
+                <p>Останньою властивістю longhand, яку я розгляну в цьому підручнику з CSS-анімації, є та, яку я використовував у попередній демонстрації. Ви помітите, що коли анімація зупиняє останню ітерацію, поле залишається на місці. Це досягається за допомогою <span class="code-snippet">animation-fill-mode</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-fill-mode</span><span class="css-symbol">:</span> <span class="css-value">forwards</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ця властивість визначає, як анімація застосовує стилі до цільового елемента до і після виконання. Це трохи складно зрозуміти концептуально, тому я поясню значення кожного значення, а потім ви зможете порівняти їх за допомогою інтерактивної демонстрації.</p>
+                <p>Ця властивість приймає наступні чотири значення ключових слів:</p>
+                <ul>
+                    <li><span class="code-snippet">none</span>: стилі не застосовуються ні до, ні після виконання (за замовчуванням)</li>
+                    <li><span class="code-snippet">forwards</span>: зберігає всі стилі, застосовані в останньому ключовому кадрі анімації</li>
+                    <li><span class="code-snippet">backwards</span>: більш-менш протилежне попередньому значенню, воно зберігає стилі, застосовані до анімації, як тільки вона починає виконуватися, але до початку анімації</li>
+                    <li><span class="code-snippet">both</span>: Зберігає стилі як для <span class="code-snippet">forwards</span>, так і для <span class="code-snippet">backwards</span></li>
+                </ul>
+                <p>Фінальна демонстрація на <a href="https://codepen.io/impressivewebs/pen/ZEaEMgg" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> в цьому посібнику з CSS-анімації зробить все трохи зрозумілішим, але може знадобитися багато часу, перш ніж ви дійсно зрозумієте, що вона робить і як цього досягти.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">animation</h3>
+            </div>
+            <div class="section-content">
+                <p>Після того, як ви добре зрозумієте кожну з властивостей, у вас буде можливість скористатися властивістю скорочення <span class="code-snippet">animation</span>, яка дозволяє вам визначити всі повні властивості в одній декларації.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation</span><span class="css-symbol">:</span> <span class="css-value">moveObject 2s ease-in-out 3 reverse running 1.3s forwards</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Чесно кажучи, це дуже багато інформації в одному рядку. Я б рекомендував використовувати скорочення, якщо декларація включає не всі властивості, а лише три-чотири з них.</p>
+                <p>Якщо ви використовуєте скорочення, ви можете розташовувати значення в будь-якому порядку, але дотримуйтесь наступних правил:</p>
+                <ul>
+                    <li>Перше значення, яке визначає час, - це <span class="code-snippet">animation-duration</span>; будь-яке наступне значення часу - це <span class="code-snippet">animation-delay</span>.</li>
+                    <li>Якщо існує конфлікт між ключовим словом і <span class="code-snippet">animation-name</span>, значення ключового слова матиме пріоритет, якщо воно з'явиться першим.</li>
+                    <li>Будь-які пропущені значення повернуться до початкового стану, як і у випадку з будь-якою властивістю скорочення CSS.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Застосування декількох анімацій до одного елемента</h3>
+            </div>
+            <div class="section-content">
+                <p>Ще одна особливість, про яку варто знати, полягає в тому, що ви можете застосувати кілька анімацій до одного об'єкта, розділяючи їх комами.</p>
+                <p>Ось приклад з використанням скорочення:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation</span><span class="css-symbol">:</span> <span class="css-value">moveObject 2s ease-in-out, fadeBox 3s linear</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Тут я визначив дві різні анімації, які відповідають двом різним наборам ключових кадрів, але застосовуються до одного й того ж об'єкта. Цей самий код можна написати від руки так:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.box</span> <span class="css-symbol">{</span>
+    <span class="css-property">animation-name</span><span class="css-symbol">:</span> <span class="css-value">moveObject, fadeBox</span><span class="css-symbol">;</span>
+    <span class="css-property">animation-duation</span><span class="css-symbol">:</span> <span class="css-value">2s, 3s</span><span class="css-symbol">;</span>
+    <span class="css-property">animation-timing-function</span><span class="css-symbol">:</span> <span class="css-value">ease-in-out, linear</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Зверніть увагу, що кожна властивість містить два значення, розділених комами. У цьому випадку скорочений запис майже напевно буде легше читати і підтримувати.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.html" class="footer-logo"><img src="img/common/logo.svg" alt="logo"></a>
+        <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
