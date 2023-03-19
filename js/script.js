@@ -1,13 +1,13 @@
-let navLinks = document.querySelectorAll(".nav-links li a");
+const navLinks = document.querySelectorAll(".nav-links li a");
 for (let i = 0; i < navLinks.length; i++) {
-    let navLink = navLinks[i].pathname;
-    let pathname = window.location.pathname;
+    const navLink = navLinks[i].pathname;
+    const pathname = window.location.pathname;
     if (navLink == pathname) {
         navLinks[i].classList.add("current");
     } else if (pathname == "/" || pathname == "/new-style/") {
         navLinks[0].classList.add("current");
-    };
-};
+    }
+}
 
 const copyButtons = document.querySelectorAll(".copy-button");
 copyButtons.forEach(copyButton => {

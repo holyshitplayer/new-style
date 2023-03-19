@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout</title>
+    <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <header class="header small">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="flexbox.html">Flexbox</a></li>
+                    <li><a href="grid.html">Grid Layout</a></li>
+                    <li><a href="animation.html">Анімація</a></li>
+                    <li><a href="shadows.html">Тінь</a></li>
+                    <li><a href="transform.html">Трансформації</a></li>
+                    <li><a href="media-queries.html">Медіа-запити</a></li>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1 class="page-header small">Grid Layout</h1>
+                <p class="page-description">
+                    Потужний інструмент для створення складних макетів веб-сторінок з гнучкою і адаптивною сіткою
+                    <br>
+                    Створюйте будь-які веб-сторінки, від простих блогів до складних електронних магазинів
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Коротко про Grid Layout. CSS Grid та Flexbox</h3>
+            </div>
+            <div class="section-content">
+                <p>CSS Grid - це система для створення адаптивних веб-сайтів. За допомогою CSS Grid можна спробувати зробити багато речей, наприклад, галерею зображень, шахову дошку, макет коміксу або меню ресторану.</p>
+                <p>Як і <a href="flexbox.html">Flexbox</a>, CSS Grid - це метод створення адаптивного макета. Однак, між ними є різниця: Flexbox призначений для одновимірних макетів, а Grid корисний для створення двовимірних макетів. Якщо ви розміщуєте елементи в одному напрямку (наприклад, кнопки всередині навігаційного елемента), то вам слід використовувати Flexbox. Але якщо ви створюєте цілий макет з рядками і стовпчиками, вам варто вибрати CSS Grid. І, звичайно, ви можете комбінувати ці два варіанти.</p>
+                <p>У Flexbox ви визначаєте вміст. А за допомогою CSS Grid спочатку потрібно визначити макет (стовпці та рядки). Ви визначаєте ширину стовпців і висоту рядків, і лише після цього розміщуєте вміст у доступних комірках сітки.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Термінологія</h3>
+            </div>
+            <div class="section-content">
+                <img src="https://sharkcoder.com/files/article/grid_terminology.png" alt="example" class="code-example">
+                <p>Grid Container - це елемент, до якого застосовується display: grid;. Він є прямим батьком усіх елементів сітки.</p>
+                <p>Grid Item - це дочірні елементи (прямі нащадки), вкладені в батьківський контейнер сітки. Вони можуть бути будь-якими елементами і представляти собою заголовок, бічну панель, нижній колонтитул тощо.</p>
+                <p>Grid Lines - це розділові лінії, які утворюють структуру сітки. Вони можуть бути вертикальними (лінії сітки стовпців) або горизонтальними (лінії сітки рядків) і розташовуватися з обох боків рядка або стовпця.</p>
+                <p>Grid Track - це простір між двома сусідніми лініями сітки. Доріжки сітки - це стовпчики або рядки сітки.</p>
+                <p>Grid Cell - це простір між двома сусідніми рядками і двома сусідніми стовпчиками сітки. Це єдина одиниця сітки. Ви можете розмістити елемент у кількох комірках.</p>
+                <p>Grid Area - це загальний простір, оточений чотирма лініями сітки. Вона може складатися з будь-якої кількості комірок сітки.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Grid Container</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб створити контейнер сітки CSS, застосуйте <span class="code-snippet">display: grid;</span> до батьківського елемента <span class="code-snippet">&lt;div&gt;</span>. Властивість <span class="code-snippet">display</span> може мати ще одне значення - <span class="code-snippet">inline-grid</span>, яке генерує сітку на рівні inline.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">container</span><span class="html-symbol">"&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item1</span><span class="html-symbol">"&gt;</span><span class="html-value">starfish</span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item2</span><span class="html-symbol">"&gt;</span><span class="html-value"></span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item3</span><span class="html-symbol">"&gt;</span><span class="html-value">clown-fish</span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item4</span><span class="html-symbol">"&gt;</span><span class="html-value"></span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item5</span><span class="html-symbol">"&gt;</span><span class="html-value">shark</span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item6</span><span class="html-symbol">"&gt;</span><span class="html-value"></span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item7</span><span class="html-symbol">"&gt;</span><span class="html-value">jellyfish</span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item8</span><span class="html-symbol">"&gt;</span><span class="html-value"></span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+    <span class="html-symbol">&lt;</span><span class="html-element">div</span> <span class="html-property">class</span><span class="html-symbol">="</span><span class="html-value-string">item9</span><span class="html-symbol">"&gt;</span><span class="html-value">crab</span><span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+<span class="html-symbol">&lt;/</span><span class="html-element">div</span><span class="html-symbol">&gt;</span>
+</pre>
+                </div>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">CSS Grid Template</h3>
+            </div>
+            <div class="section-content">
+                <p>Існує чотири властивості <span class="code-snippet">grid-template-*</span>: <span class="code-snippet">grid-template-rows</span>, <span class="code-snippet">grid-template-columns</span>, <span class="code-snippet">grid-template-areas</span> і <span class="code-snippet">grid-template</span>. Остання є скороченням для перших трьох.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid-template-columns та grid-template-rows</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивості CSS <span class="code-snippet">grid-template-columns</span> і <span class="code-snippet">grid-template-rows</span> визначають стовпці і рядки сітки.</p>
+                <p>Їх значення представляють розмір доріжки (може бути довжиною, відсотком або часткою вільного простору в сітці - одиниця <span class="code-snippet">fr</span>), а простір між ними є лінією сітки (назва на ваш вибір).</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">&lt;track-size&gt; | &lt;line-name&gt; &lt;track-size&gt;</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">&lt;track-size&gt; | &lt;line-name&gt; &lt;track-size&gt;</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Якщо ваше визначення містить частини, що повторюються, ви можете використати функцію <span class="code-snippet">repeat()</span>:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(3, 33.33%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">repeat(3, 33.33% [col-start])</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Що еквівалентно цьому:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">33.33% 33.33% 33.33%</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">33.33% [col-start] 33.33% [col-start] 33.33% [col-start]</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Це створює три рядки з висотою 33,33% і три стовпчики з шириною 33,33%.</p>
+                <img src="https://sharkcoder.com/files/article/grid_template.png" alt="example" class="code-example">
+                <p>Якщо ви хочете, щоб ширина або висота стовпців чи рядків залежали від розміру вмісту, використовуйте <span class="code-snippet">grid-template-columns: auto;</span> або <span class="code-snippet">grid-template-rows: auto;</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid-template-areas</h3>
+            </div>
+            <div class="section-content">
+                <p>Ця властивість визначає шаблон сітки, посилаючись на назви областей сітки, які вказано за допомогою властивості <span class="code-snippet">grid-area</span>. Повторення назви області сітки призводить до того, що вміст поширюється на ці клітинки. Синтаксис візуально представляє структуру сітки.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">repeat(4, 25%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(5, 20%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-areas</span><span class="css-symbol">:</span>
+        <span class="css-value-string">"a b b b b"</span>
+        <span class="css-value-string">"a c c c d"</span>
+        <span class="css-value-string">"a c c c d"</span>
+        <span class="css-value-string">"e f g h i"</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">grid-area</span> дає елементу ім'я, щоб на нього міг посилатися шаблон, створений за допомогою властивості <span class="code-snippet">grid-template-areas</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item2</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">a</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item4</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">b</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item6</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">c</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item8</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">d</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+
+<span class="css-selector">.item1</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">e</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item3</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">f</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item5</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">g</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item7</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">h</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item9</span> <span class="css-symbol">{</span> <span class="css-property">grid-area</span><span class="css-symbol">:</span> <span class="css-value">i</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Це створить сітку шириною 5 стовпців і висотою 4 рядки:</p>
+                <img src="https://sharkcoder.com/files/article/grid_areas.png" alt="example" class="code-example">
+                <p>"A" - це одна область на 3 клітинки вниз, а "B" - на 4 клітинки праворуч. CSS Grid автоматично розглядає їх як окремі блоки.</p>
+                <p>Ви можете використовувати крапку як значення площі сітки. Вона позначатиме порожню комірку сітки:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">grid-template-areas</span><span class="css-symbol">:</span>
+    <span class="css-value-string">"a b b b b"</span>
+    <span class="css-value-string">"a c c c d"</span>
+    <span class="css-value-string">"a c c c d"</span>
+    <span class="css-value-string">". f g h ."</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_areas_period.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid-templates</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">grid-template</span> - це скорочення для встановлення шаблонів <span class="code-snippet">grid-template-rows</span>, <span class="code-snippet">grid-template-columns</span> і <span class="code-snippet">grid-template-areas</span> в одному оголошенні.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template</span><span class="css-symbol">:</span>
+        <span class="css-value-string">"a b b b b"</span> <span class="css-value">25%</span> <span class="css-comment">// представляє рядок з площами та висотою рядка</span>
+        <span class="css-value-string">"a c c c d"</span> <span class="css-value">25%</span>
+        <span class="css-value-string">"a c c c d"</span> <span class="css-value">25%</span>
+        <span class="css-value-string">"e f g h i"</span> <span class="css-value">25%</span>
+        <span class="css-value">/ 20% 20% 20% 20% 20%</span><span class="css-symbol">;</span> <span class="css-comment">// представляє ширину стовпців</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Це еквівалентно цьому:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">repeat(4, 25%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(5, 20%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-areas</span><span class="css-symbol">:</span>
+        <span class="css-value-string">"a b b b b"</span> <span class="css-value">25%</span>
+        <span class="css-value-string">"a c c c d"</span> <span class="css-value">25%</span>
+        <span class="css-value-string">"a c c c d"</span> <span class="css-value">25%</span>
+        <span class="css-value-string">"e f g h i"</span> <span class="css-value">25%</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Grid Auto</h3>
+            </div>
+            <div class="section-content">
+                <p>Існує три властивості <span class="code-snippet">grid-auto-*</span>: <span class="code-snippet">grid-auto-rows</span>, <span class="code-snippet">grid-auto-columns</span> та <span class="code-snippet">grid-auto-flow</span>.</p>
+                <p>У той час як властивості <span class="code-snippet">grid-template-*</span> використовуються для визначення положення та розміру клітинок сітки, властивості <span class="code-snippet">grid-auto-*</span> використовуються лише для визначення розміру клітинок сітки. На відміну від властивостей <span class="code-snippet">grid-template-*</span>, властивості <span class="code-snippet">grid-auto-*</span> приймають лише одне значення довжини.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid-auto-columns та grid-auto-rows</h3>
+            </div>
+            <div class="section-content">
+                <p>Ці властивості визначають розмір треків сітки, які створюються, коли елементів сітки більше, ніж клітинок у сітці, або коли елемент сітки розміщено поза межами сітки, визначеної властивостями <span class="code-snippet">grid-template-*</span> (явна сітка).</p>
+                <p>Використовуйте властивість <span class="code-snippet">grid-auto-columns</span>, щоб встановити ширину за замовчуванням для всіх стовпців. Властивість <span class="code-snippet">grid-template-columns</span> перевизначає цю властивість.</p>
+                <p>Використовуйте властивість <span class="code-snippet">grid-auto-rows</span> для встановлення висоти за замовчуванням для всіх рядків. Властивість <span class="code-snippet">grid-template-rows</span> перевизначає цю властивість.</p>
+                <p><span class="code-snippet">grid-auto-columns</span> та <span class="code-snippet">grid-auto-rows</span> можуть мати такі значення:</p>
+                <ul>
+                    <li><span class="code-snippet">auto</span>: встановлює розмір рядків або стовпців на основі розміру контейнера за замовчуванням; комірки з <span class="code-snippet">auto</span> розтягуватимуться, щоб заповнити простір, що залишився, відповідно до розміру батьківського контейнера</li>
+                    <li><span class="code-snippet">max-content</span>: встановлює розмір кожного рядка або стовпця залежно від найбільшого елемента в рядку або стовпці</li>
+                    <li><span class="code-snippet">min-content</span>: встановлює розмір кожного рядка або стовпця залежно від найменшого елемента в рядку або стовпці</li>
+                    <li><span class="code-snippet">&lt;length&gt;</span>: задає розмір рядків або стовпців за допомогою значення довжини (px, em, % тощо)</li>
+                    <li><span class="code-snippet">minmax(min, max)</span>: встановлює діапазон розмірів, більший або рівний min і менший або рівний max (застосовується лише до <span class="code-snippet">grid-auto-columns</span>)</li>
+                    <li><span class="code-snippet">fr</span>: частка вільного простору в сітці (застосовується лише до <span class="code-snippet">grid-auto-columns</span>)</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-auto-rows</span><span class="css-symbol">:</span> <span class="css-value">150px</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid-auto-flow</h3>
+            </div>
+            <div class="section-content">
+                <p>Якщо у вас є елементи сітки, які не розміщені явно на сітці, ви можете використати властивість <span class="code-snippet">grid-auto-flow</span>, яка автоматично розмістить їх на сітці.</p>
+                <p><span class="code-snippet">Він може мати наступні значення:</p>
+                <ul>
+                    <li><span class="code-snippet">row</span>: заповнює кожен рядок по черзі, додаючи нові рядки за необхідності (за замовчуванням)</li>
+                    <li><span class="code-snippet">column</span>: заповнює кожен стовпчик по черзі, додаючи нові стовпчики за потреби</li>
+                    <li><span class="code-snippet">dense</span>: змушує дочірні елементи заповнювати прогалини, якщо вони можуть поміститися (якщо менші елементи з'являться пізніше). Це значення змінює візуальний порядок елементів і може призвести до того, що вони виглядатимуть невпорядковано</li>
+                </ul>
+                <p>Якщо ви встановите <span class="code-snippet">grid-auto-flow</span> на <span class="code-snippet">column</span>, елементи будуть стікати вниз по стовпчиках:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">80px 80px 80px</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">96px 96px 96px 96px</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-auto-flow</span><span class="css-symbol">:</span> <span class="css-value">column</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.item2</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-column</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-row</span><span class="css-symbol">:</span> <span class="css-value">1 / 3</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.item6</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-column</span><span class="css-symbol">:</span> <span class="css-value">5</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-row</span><span class="css-symbol">:</span> <span class="css-value">1 / 3</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid-auto-flow.png" alt="example" class="code-example">
+                <p>Якщо ви встановите для параметра <span class="code-snippet">grid-auto-flow</span> значення <span class="code-snippet">dense</span>, прогалини будуть заповнені:</p>
+                <img src="https://sharkcoder.com/files/article/grid-auto-flow-dense.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Grid Gaps</h3>
+            </div>
+            <div class="section-content">
+                <p>Проміжки - це горизонтальні та вертикальні проміжки між комірками сітки. Вони визначають розмір ліній сітки. Ви можете створювати проміжки за допомогою властивостей <span class="code-snippet">grid-column-gap</span> і <span class="code-snippet">grid-row-gap</span>. <span class="code-snippet">grid-column-gap: 24px;</span> створює проміжок 24px між стовпчиками, <span class="code-snippet">grid-row-gap: 24px;</span> створює проміжок 24px між рядками.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">repeat(3, 30%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(3, 30%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-row-gap</span><span class="css-symbol">:</span> <span class="css-value">12px</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-column-gap</span><span class="css-symbol">:</span> <span class="css-value">24px</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid-gaps.png" alt="example" class="code-example">
+                <p>Ви можете використовувати grid-gap як скорочення для <span class="code-snippet">grid-row-gap</span> і <span class="code-snippet">grid-column-gap</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">grid</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">repeat(3, 30%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(3, 30%)</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-gap</span><span class="css-symbol">:</span> <span class="css-value">12px 24px</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Вирівнювання елементів по горизонталі</h3>
+            </div>
+            <div class="section-content">
+                <p>Ці властивості вирівнюють сітку вздовж горизонтальної осі: <span class="code-snippet">justify-items</span>, <span class="code-snippet">justify-content</span> і <span class="code-snippet">justify-self</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">justify-items</h3>
+            </div>
+            <div class="section-content">
+                <p>Ця властивість застосовується до всіх елементів сітки всередині контейнера. Властивість <span class="code-snippet">justify-items</span> може мати наступні значення:</p>
+                <ul>
+                    <li><span class="code-snippet">start</span>: вирівнює елементи за початковим краєм комірки</li>
+                    <li><span class="code-snippet">end</span>: вирівнює елементи за кінцевим краєм комірки</li>
+                    <li><span class="code-snippet">center</span>: вирівнює елементи по центру комірки</li>
+                    <li><span class="code-snippet">stretch</span>: заповнює всю ширину комірки (за замовчуванням)</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">justify-items</span><span class="css-symbol">:</span> <span class="css-value">start | end | center | stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_justify-items.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">justify-content</h3>
+            </div>
+            <div class="section-content">
+                <p>Іноді загальний розмір сітки може бути меншим за розмір контейнера сітки. Це може статися, якщо всі елементи сітки задано у негнучких одиницях виміру, наприклад, у пікселях. У цьому випадку ви можете вирівняти вміст сітки всередині контейнера сітки за допомогою властивості <span class="code-snippet">justify-content</span>.</p>
+                <p>Він може мати наступні значення:</p>
+                <ul>
+                    <li><span class="code-snippet">start</span>: вирівнює сітку до початкового краю контейнера сітки</li>
+                    <li><span class="code-snippet">end</span>: вирівнює сітку по відношенню до торцевого краю контейнера з сіткою</li>
+                    <li><span class="code-snippet">center</span>: вирівнює сітку по центру контейнера сітки</li>
+                    <li><span class="code-snippet">stretch</span>: змінює розмір елементів сітки, щоб сітка заповнила всю ширину контейнера сітки (не працює з негнучкими блоками)</li>
+                    <li><span class="code-snippet">space-around</span>: розміщує рівну кількість проміжків між кожним елементом сітки, з половинними проміжками на дальніх кінцях</li>
+                    <li><span class="code-snippet">space-between</span>: розміщує рівну кількість проміжків між кожним елементом сітки, без проміжків на дальніх кінцях</li>
+                    <li><span class="code-snippet">space-evenly</span>: розміщує рівну кількість проміжків між кожним елементом сітки, включно з дальніми кінцями</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">justify-content</span><span class="css-symbol">:</span> <span class="css-value">start | end | center | stretch | space-around | space-between | space-evenly</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_justify-content.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">justify-self</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб вирівняти окремий елемент сітки всередині однієї клітинки, встановіть для нього властивість <span class="code-snippet">justify-self</span>. Вона може мати такі значення:</p>
+                <ul>
+                    <li><span class="code-snippet">start</span>: вирівнює елемент сітки за лівим краєм комірки</li>
+                    <li><span class="code-snippet">end</span>: вирівнює елемент сітки за правим краєм комірки</li>
+                    <li><span class="code-snippet">center</span>: вирівнює елемент сітки по центру комірки</li>
+                    <li><span class="code-snippet">stretch</span>: заповнює всю ширину комірки (за замовчуванням)</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">justify-self</span><span class="css-symbol">:</span> <span class="css-value">start | end | center | stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_justify-self.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Вирівнювання елементів по вертикалі</h3>
+            </div>
+            <div class="section-content">
+                <p>Ці властивості вирівнюють сітку по вертикальній осі: <span class="code-snippet">align-items</span>, <span class="code-snippet">align-content</span> та <span class="code-snippet">align-self</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">align-items</h3>
+            </div>
+            <div class="section-content">
+                <p>Ця властивість застосовується до всіх елементів сітки всередині контейнера. Властивість <span class="code-snippet">align-items</span> може мати наступні значення:</p>
+                <ul>
+                    <li><span class="code-snippet">start</span>: вирівнює елементи за початковим краєм комірки.</li>
+                    <li><span class="code-snippet">end</span>: вирівнює елементи за кінцевим краєм комірки</li>
+                    <li><span class="code-snippet">center</span>: вирівнює елементи по центру комірки</li>
+                    <li><span class="code-snippet">stretch</span>: заповнює всю висоту комірки (за замовчуванням)</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">align-items</span><span class="css-symbol">:</span> <span class="css-value">start | end | center | stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_align-items.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">align-content</h3>
+            </div>
+            <div class="section-content">
+                <p>Іноді загальний розмір сітки може бути меншим за розмір контейнера сітки. Це може статися, якщо всі елементи сітки задано у негнучких одиницях виміру, наприклад, у пікселях. У цьому випадку ви можете вирівняти вміст сітки в контейнері сітки за допомогою властивості <span class="code-snippet">align-content</span>.</p>
+                <p>Він може мати наступні значення:</p>
+                <ul>
+                    <li><span class="code-snippet">start</span>: вирівнює сітку до початкового краю контейнера сітки</li>
+                    <li><span class="code-snippet">end</span>: вирівнює сітку по відношенню до торцевого краю контейнера з сіткою</li>
+                    <li><span class="code-snippet">center</span>: вирівнює сітку по центру контейнера сітки</li>
+                    <li><span class="code-snippet">stretch</span>: змінює розмір елементів сітки, щоб сітка заповнила всю висоту контейнера сітки (не працює з негнучкими блоками)</li>
+                    <li><span class="code-snippet">space-around</span>: розміщує рівну кількість проміжків між кожним елементом сітки, з половинними проміжками на дальніх кінцях</li>
+                    <li><span class="code-snippet">space-between</span>: розміщує рівну кількість проміжків між кожним елементом сітки, без проміжків на дальніх кінцях</li>
+                    <li><span class="code-snippet">space-evenly</span>: розміщує рівну кількість проміжків між кожним елементом сітки, включно з дальніми кінцями</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">align-content</span><span class="css-symbol">:</span> <span class="css-value">start | end | center | stretch | space-around | space-between | space-evenly</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_align-content.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">align-self</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб вирівняти окремий елемент сітки всередині однієї клітинки, встановіть для нього властивість <span class="code-snippet">align-self</span>. Вона може мати такі значення:</p>
+                <ul>
+                    <li><span class="code-snippet">start</span>: вирівнює елемент сітки за лівим краєм комірки</li>
+                    <li><span class="code-snippet">end</span>: вирівнює елемент сітки за правим краєм комірки</li>
+                    <li><span class="code-snippet">center</span>: вирівнює елемент сітки по центру комірки</li>
+                    <li><span class="code-snippet">stretch</span>: заповнює всю висоту комірки (за замовчуванням)</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">align-self</span><span class="css-symbol">:</span> <span class="css-value">start | end | center | stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/grid_align-self.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Вирівнювання елементів по горизонталі та вертикалі</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивості <span class="code-snippet">place-*</span> є скороченнями властивостей <span class="code-snippet">justify-*</span> та <span class="code-snippet">align-*</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">place-items</h3>
+            </div>
+            <div class="section-content">
+                <p><span class="code-snippet">place-items</span> встановлює властивості <span class="code-snippet">align-items</span> та <span class="code-snippet"></span> в одному оголошенні.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-items</span><span class="css-symbol">:</span> <span class="css-value">&lt;align-items&gt; &lt;justify-items&gt;</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Перше значення задає <span class="code-snippet">align-items</span>, а друге - <span class="code-snippet">justify-items</span>. Якщо друге значення не вказано, до обох властивостей буде застосовано перше значення.</p>
+                <p>Приклади:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-items</span><span class="css-symbol">:</span> <span class="css-value">center</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-items</span><span class="css-symbol">:</span> <span class="css-value">center stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">place-content</h3>
+            </div>
+            <div class="section-content">
+                <p><span class="code-snippet">place-content</span> встановлює властивості <span class="code-snippet">align-content</span> та <span class="code-snippet">justify-content</span> в одному оголошенні.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-content</span><span class="css-symbol">:</span> <span class="css-value">&lt;align-content&gt; &lt;justify-content&gt;</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Перше значення задає <span class="code-snippet">align-content</span>, а друге - <span class="code-snippet">justify-content</span>. Якщо друге значення не вказано, до обох властивостей буде застосовано перше значення.</p>
+                <p>Приклади:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-content</span><span class="css-symbol">:</span> <span class="css-value">center</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-content</span><span class="css-symbol">:</span> <span class="css-value">center stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">place-self</h3>
+            </div>
+            <div class="section-content">
+                <p><span class="code-snippet">place-self</span> встановлює властивості <span class="code-snippet">align-self</span> та <span class="code-snippet">justify-self</span> в одному оголошенні.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-self</span><span class="css-symbol">:</span> <span class="css-value">&lt;align-content&gt; &lt;justify-content&gt;</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Перше значення встановлює <span class="code-snippet">align-self</span>, а друге - <span class="code-snippet">justify-self</span>. Якщо друге значення не вказано, до обох властивостей буде застосовано перше значення.</p>
+                <p>Приклади:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-self</span><span class="css-symbol">:</span> <span class="css-value">center</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">place-self</span><span class="css-symbol">:</span> <span class="css-value">center stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">grid</span> - це скорочена властивість, яка встановлює всі явні властивості сітки (<span class="code-snippet">grid-template-rows</span>, <span class="code-snippet">grid-template-columns</span> і <span class="code-snippet">grid-template-areas</span>) або всі неявні властивості сітки (<span class="code-snippet">grid-auto-rows</span>, <span class="code-snippet">grid-auto-columns</span> і <span class="code-snippet">grid-auto-flow</span>) в одному оголошенні.</p>
+                <p>Ви можете вказати тільки явні або неявні властивості сітки в одному оголошенні <span class="code-snippet">grid</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid</span><span class="css-symbol">:</span> <span class="css-value">250px 400px / 4fr 2fr</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Еквівалентно:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-rows</span><span class="css-symbol">:</span> <span class="css-value">250px 400px</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">4fr 2fr</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">grid-*-start, grid-*-end</h3>
+            </div>
+            <div class="section-content">
+                <p>Цей набір властивостей (<span class="code-snippet">grid-column-start</span>, <span class="code-snippet">grid-column-end</span>, <span class="code-snippet">grid-row-start</span>, <span class="code-snippet">grid-row-end</span>) визначає розташування елемента сітки в сітці і вказує початкову та кінцеву точки, через які ви хочете протягнути вміст клітинки. Вони посилаються на певні лінії сітки і застосовуються до елемента, а не до контейнера.</p>
+                <ul>
+                    <li><span class="code-snippet">grid-column-start/grid-row-start</span>: рядок, з якого починається елемент</li>
+                    <li><span class="code-snippet">grid-column-end/grid-row-end</span>: рядок, в якому закінчується елемент</li>
+                </ul>
+                <ul>
+                    <li><span class="code-snippet">&lt;line&gt;</span>: номер для посилання на пронумеровану лінію сітки або ім'я для посилання на іменовану лінію сітки</li>
+                    <li><span class="code-snippet">span &lt;number&gt;</span>: елемент буде простягатися через вказану кількість доріжок сітки</li>
+                    <li><span class="code-snippet">span &lt;name&gt;</span>: елемент буде переміщуватись, доки не досягне наступного рядка з вказаною назвою</li>
+                    <li><span class="code-snippet">auto</span>: автоматичний проміжок або проміжок за замовчуванням</li>
+                </ul>
+                <p>Ви також можете використовувати скорочення: <span class="code-snippet">grid-column</span> (для <span class="code-snippet">grid-column-start</span> + <span class="code-snippet">grid-column-end</span>) або <span class="code-snippet">grid-row</span> (<span class="code-snippet">grid-row-start</span> + <span class="code-snippet">grid-row-end</span>). Кожна з них приймає ті ж самі значення, що і повна версія.</p>
+                <p>Наприклад:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-row-start</span><span class="css-symbol">:</span> <span class="css-value">2</span><span class="css-symbol">;</span>
+    <span class="css-property">grid-row-end</span><span class="css-symbol">:</span> <span class="css-value">4</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Або:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-row</span><span class="css-symbol">:</span> <span class="css-value">2 / span 3</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Це означає, що елемент займе рядки з 2 по 4. Якщо це записано як <span class="code-snippet">grid-row: 2 / span 3;</span>, перша частина - це рядок, з якого починається елемент, а друга частина - це кількість клітинок, через які він пройде. Це працює так само для стовпців.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Спеціальні ключові слова та функції</h3>
+            </div>
+            <div class="section-content">
+                <p>Для визначення розмірів рядків і стовпців можна використовувати різні довжини: px, rem, % тощо. Ви також можете використовувати такі ключові слова, як <span class="code-snippet">auto-fit</span>, <span class="code-snippet">auto-fill</span>, <span class="code-snippet">mi-content</span>, <span class="code-snippet">max-content</span>, дробові одиниці (<span class="code-snippet">fr</span>), а також такі функції, як <span class="code-snippet">minmax()</span> і <span class="code-snippet">repeat()</span>.</p>
+                <p><span class="code-snippet">auto-fill</span> заповнює рядок стількома стовпчиками, скільки він може вмістити. Він створює стовпці щоразу, коли новий стовпець може поміститися. Новостворені стовпці можуть бути порожніми, але вони все одно займатимуть відведене місце в рядку.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(auto-fill, minmax(100px, 1fr))</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">auto-fit</span> вписує доступні на даний момент стовпці в простір, розширюючи їх так, щоб вони займали будь-який вільний простір. Це дозволяє обгортати стовпці в рядки, коли не вистачає місця для мінімального значення, не переповнюючи вміст. Нові додані стовпці не займатимуть місця і будуть згорнуті.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(auto-fit, minmax(100px, 1fr))</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Дробова одиниця (<span class="code-snippet">fr</span>) - це одна частина доступного простору. 1fr вказує браузеру розподілити простір між колонками так, щоб кожна колонка отримала рівну частину цього простору. Якщо ширина div дорівнює 400px, repeat(4, 1fr) означає, що 400px буде розділено на 4 рівні частини по 100px. Ви також можете використовувати числа з плаваючою комою для визначення fr. Той самий 1fr в межах одного батька зменшиться до меншого розміру, коли будуть додані пропуски.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(4, 1fr)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">min-content</span> представляє найбільший внесок min-content елементів сітки, що займають доріжку сітки. Внесок min-content - це розмір, який вносить блок до розміру min-content блоку, що його містить.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">200px 1fr 2fr min-content</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">max-content</span> представляє найбільший внесок максимального вмісту елементів сітки, що займають доріжку сітки. Внесок максимального вмісту - це розмір, який вносить блок до розміру максимального вмісту блоку, що його містить.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">200px 1fr 2fr max-content</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">minmax(min, max)</span> встановлює діапазон розмірів, більший або рівний min і менший або рівний max. Наприклад, щоб встановити розмір стовпця 1fr, але зменшити його не більше ніж до 300px:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">1fr minmax(300px, 1fr)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">repeat()</span> дозволяє повторити стовпці або рядки стільки разів, скільки потрібно. Наприклад, щоб зробити 5 стовпців:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(5, 1fr)</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Що еквівалентно цьому:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">1fr 1fr 1fr 1fr 1fr</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ви можете поєднувати ці речі, наприклад:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">grid-template-columns</span><span class="css-symbol">:</span> <span class="css-value">repeat(auto-fill, minmax(300px, 1fr))</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.html" class="footer-logo"><img src="img/common/logo.svg" alt="logo"></a>
+        <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
