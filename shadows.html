@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тіні</title>
+    <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <header class="header small">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="flexbox.html">Flexbox</a></li>
+                    <li><a href="grid.html">Grid Layout</a></li>
+                    <li><a href="animation.html">Анімації</a></li>
+                    <li><a href="shadows.html">Тіні</a></li>
+                    <li><a href="transform.html">Трансформації</a></li>
+                    <li><a href="media-queries.html">Медіа-запити</a></li>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1 class="page-header small">Тіні</h1>
+                <p class="page-description">
+                    Візуальна глибина, реалістичність, динамічність та ефектність веб-елементів.
+                    <br>
+                    Створюйте 3D-ефекти, ефекти натурального світла і тіні.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">box-shadow</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">box-shadow</span> додає тіньові ефекти навколо елемента. Тінь
+                    описується зміщенням по X та Y відносно елемента, радіусами розмиття та розтікання, а також
+                    кольором.</p>
+                <p>Якщо для елемента з тіньовою рамкою вказано <span class="code-snippet">border-radius</span>, тіньова
+                    рамка набуває таких самих заокруглених кутів.</p>
+                <p>Властивість <span class="code-snippet">box-shadow</span> може мати кілька значень:</p>
+                <ul>
+                    <li><span class="code-snippet">inset</span>: змінює тінь на тінь всередині рамки - всередині рамки,
+                        вище фону, але нижче вмісту (наприклад, <span class="code-snippet">box-shadow: 5px 10px
+                            inset;</span>)</li>
+                    <li><span class="code-snippet">&lt;offset-x&gt;</span>: (обов'язковий) задає відстань по
+                        горизонталі; від'ємні значення розміщують тінь зліва від елемента; додатні - справа від поля
+                    </li>
+                    <li><span class="code-snippet">&lt;offset-y&gt;</span>: (обов'язковий) задає відстань по вертикалі;
+                        від'ємні значення розміщують тінь над елементом, додатні - під блоком</li>
+                    <li><span class="code-snippet">&lt;blur-radius&gt;</span>: чим більше це значення, тим більше
+                        розмиття; від'ємні значення не допускаються (наприклад, <span class="code-snippet">box-shadow:
+                            10px 10px 8px #888;</span>). Якщо не вказано, буде встановлено значення 0, і край тіні буде
+                        різким</li>
+                    <li><span class="code-snippet">&lt;spread-radius&gt;</span>: додатні значення призведуть до того, що
+                        тінь розшириться і стане більшою, від'ємні значення призведуть до того, що тінь зменшиться
+                        (наприклад, <span class="code-snippet">box-shadow: 10px 10px 8px 10px #888;</span>). Якщо не
+                        вказано, то буде 0 і тінь буде такого ж розміру, як і елемент</li>
+                    <li><span class="code-snippet">&lt;color&gt;</span>: задає колір тіні</li>
+                    <li><span class="code-snippet">none</span>: значення за замовчуванням; тінь не відображається</li>
+                </ul>
+                <img src="https://sharkcoder.com/files/article/shadow_single.png" alt="example" class="code-example">
+                <p>Ви можете вказати один <span class="code-snippet">box-shadow</span>, використовуючи 2-4 значення
+                    <span class="code-snippet">&lt;length&gt;</span>, <span class="code-snippet">&lt;color&gt;</span> та
+                    <span class="code-snippet">inset</span>:</p>
+                <ul>
+                    <li>Якщо вказано лише 2 значення, вони інтерпретуються як значення <span
+                            class="code-snippet">&lt;offset-x&gt;</span><span
+                            class="code-snippet">&lt;offset-y&gt;</span>.</li>
+                    <li>Якщо вказано 3-тє значення, воно інтерпретується як <span
+                            class="code-snippet">&lt;blur-radius&gt;</span>.</li>
+                    <li>Якщо задано 4-е значення, воно інтерпретується як <span
+                            class="code-snippet">&lt;spread-radius&gt;</span>.</li>
+                </ul>
+                <p>Щоб вказати декілька тіней, надайте список тіней, розділених комами (кожна з яких має більше значення
+                    <span class="code-snippet">&lt;length&gt;</span>, ніж попередня), наприклад, так:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">5px 5px #888, 10px 10px #7eb4e2, 15px 15px #f69ec4</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/shadow_multiple.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Одностороння тінь</h3>
+            </div>
+            <div class="section-content">
+                <p>Ви можете створити односторонню тінь, встановивши значення <span
+                        class="code-snippet">&lt;offset-x&gt;</span> на 0 і застосувавши від'ємний <span
+                        class="code-snippet">&lt;spread-radius&gt;</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">0 10px 5px -5px #888</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/shadow_one-sided.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Одностороння тінь на всю ширину</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб створити односторонню тінь, довжина якої дорівнює довжині елемента, встановіть значення <span
+                        class="code-snippet">&lt;offset-x&gt;</span> рівним 0 і застосуйте від'ємне значення <span
+                        class="code-snippet">&lt;offset-y&gt;</span>:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">0 -16px 12px 12px #000</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <p>Він буде працювати тільки для навігаційної панелі, яка прилипає до верхньої, лівої та правої частини
+                    сторінки. Якщо застосувати цей тип тіні до елемента, навколо якого є простір, він виглядатиме як
+                    тристороння тінь.</p>
+                <img src="https://sharkcoder.com/files/article/shadow_full-width.png" alt="example"
+                    class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Тінь з двох протилежних сторін</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб створити тінь, яка падає з двох протилежних сторін, додайте два списки через кому. Другий список
+                    повинен містити від'ємне значення для <span class="code-snippet">&lt;offset-x&gt;</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">10px 0 10px -10px #666</span><span class="css-symbol">,</span>
+            <span class="css-value">-10px 0 10px -10px #666</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/shadow_opposite.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Нерегулярні тіні-краплі</h3>
+            </div>
+            <div class="section-content">
+                <p>Ось (трохи змінені) приклади створення нерегулярних тіней з книги Леа Вероу "Секрети CSS". У
+                    наведених нижче прикладах тіні створюються за допомогою властивості <span
+                        class="code-snippet">filter</span>, а не <span class="code-snippet">box-shadow</span>.</p>
+                <img src="https://sharkcoder.com/files/article/shadow_irregular.png" alt="example" class="code-example">
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">div</span> <span class="css-symbol">{</span>
+    <span class="css-property">position</span><span class="css-symbol">:</span> <span class="css-value">relative</span><span class="css-symbol">;</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">inline-flex</span><span class="css-symbol">;</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">column</span><span class="css-symbol">;</span>
+    <span class="css-property">justify-content</span><span class="css-symbol">:</span> <span class="css-value">center</span><span class="css-symbol">;</span>
+    <span class="css-property">vertical-align</span><span class="css-symbol">:</span> <span class="css-value">bottom</span><span class="css-symbol">;</span>
+    <span class="css-property">width</span><span class="css-symbol">:</span> <span class="css-value">5.9em</span><span class="css-symbol">;</span>
+    <span class="css-property">height</span><span class="css-symbol">:</span> <span class="css-value">5.2em</span><span class="css-symbol">;</span>
+    <span class="css-property">margin</span><span class="css-symbol">:</span> <span class="css-value">.6em</span><span class="css-symbol">;</span>
+    <span class="css-property">background</span><span class="css-symbol">:</span> <span class="css-value">#7eb4e2</span><span class="css-symbol">;</span>
+    <span class="css-property">filter</span><span class="css-symbol">:</span> <span class="css-value">drop-shadow(.1em .1em .1em rgba(0,0,0,.5))</span><span class="css-symbol">;</span>
+    <span class="css-property">font</span><span class="css-symbol">:</span> <span class="css-value">200%/1.6</span> <span class="css-value-string">"Amatic SC"</span><span class="css-value">, cursive</span><span class="css-symbol">;</span>
+    <span class="css-property">font-weight</span><span class="css-symbol">:</span> <span class="css-value">700</span><span class="css-symbol">;</span>
+    <span class="css-property">text-align</span><span class="css-symbol">:</span> <span class="css-value">center</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.speech</span> <span class="css-symbol">{</span>
+    <span class="css-property">border-radius</span><span class="css-symbol">:</span> <span class="css-value">.3em</span><span class="css-symbol">;</span>
+    
+    <span class="css-selector">&::before</span> <span class="css-symbol">{</span>
+        <span class="css-property">content</span><span class="css-symbol">:</span> <span class="css-value-string">""</span><span class="css-symbol">;</span>
+        <span class="css-property">position</span><span class="css-symbol">:</span> <span class="css-value">absolute</span><span class="css-symbol">;</span>
+        <span class="css-property">top</span><span class="css-symbol">:</span> <span class="css-value">1em</span><span class="css-symbol">;</span>
+        <span class="css-property">right</span><span class="css-symbol">:</span> <span class="css-value">-.7em</span><span class="css-symbol">;</span>
+        <span class="css-property">width</span><span class="css-symbol">:</span> <span class="css-value">0</span><span class="css-symbol">;</span>
+        <span class="css-property">height</span><span class="css-symbol">:</span> <span class="css-value">0</span><span class="css-symbol">;</span>
+        <span class="css-property">border</span><span class="css-symbol">:</span> <span class="css-value">1em solid transparent</span><span class="css-symbol">;</span>
+        <span class="css-property">border-left-color</span><span class="css-symbol">:</span> <span class="css-value">#7eb4e2</span><span class="css-symbol">;</span>
+        <span class="css-property">border-right-width</span><span class="css-symbol">:</span> <span class="css-value">0</span><span class="css-symbol">;</span>
+    <span class="css-symbol">}</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.dotted</span> <span class="css-symbol">{</span>
+    <span class="css-property">background</span><span class="css-symbol">:</span> <span class="css-value">transparent</span><span class="css-symbol">;</span>
+    <span class="css-property">border</span><span class="css-symbol">:</span> <span class="css-value">.3em dotted #7eb4e2</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.cutout</span> <span class="css-symbol">{</span>
+    <span class="css-property">border</span><span class="css-symbol">:</span> <span class="css-value">.5em solid #7eb4e2</span><span class="css-symbol">;</span>
+    <span class="css-property">border-image</span><span class="css-symbol">:</span> <span class="css-value">1 url(</span><span class="css-value-string">'data:image/svg+xml, &lt;svg xmlns="http://www.w3.org/2000/svg" width="3" height="3" fill="%237eb4e2"&gt;&lt;polygon points="0,1 1,0 2,0 3,1 3,2 2,3 1,3 0,2"/&gt;&lt;/svg&gt;'</span><span class="css-value">)</span><span class="css-symbol">;</span>
+    <span class="css-property">background-clip</span><span class="css-symbol">:</span> <span class="css-value">padding-box</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">text-shadow</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">text-shadow</span> корисна для додавання тіні до тексту. Тіні можуть бути одношаровими або багатошаровими, розмитими, кольоровими або прозорими. Застосовуючи тінь до елемента, ви можете вказати тільки одне значення довжини і кольору, таким чином створюючи кольорову копію окремого символу або слова. Також за допомогою тіні можна зробити текст більш читабельним, якщо контраст між кольором тексту і фону недостатній.</p>
+                <p>Кожна тінь застосовується як до самого тексту, так і до властивості <span class="code-snippet">text-decoration</span>, якщо вона є. Ви можете встановити кілька тіней одночасно, розділяючи їх комами. Тіні перекривають один одного, але не перекривають сам текст. Перша тінь завжди розташовується над рештою тіней.</p>
+                <p>Властивість <span class="code-snippet">text-shadow</span> може мати до чотирьох значень: два або три значення, що визначають довжину тіні, і необов'язковий колір.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">text-shadow</span><span class="css-symbol">:</span> <span class="css-value">x-offset | y-offset | blur | color</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <ul>
+                    <li><span class="code-snippet">x-offset</span>: задає горизонтальний зсув тіні; додатне значення створює зсув тіні праворуч від тексту, а від'ємна довжина створює тінь ліворуч</li>
+                    <li><span class="code-snippet">y-offset</span>: задає вертикальний зсув тіні; додатне значення зміщує тінь вниз, від'ємне - вгору</li>
+                    <li><span class="code-snippet">blur</span>: задає радіус розмиття; від'ємні значення не допускаються; якщо значення розмиття дорівнює 0, край тіні є чітким; інакше, чим більше значення, тим більше розмивається край тіні</li>
+                </ul>
+                <p>Наприклад:</p>
+                <img src="https://sharkcoder.com/files/article/font_stroked+shadow3.png" alt="example" class="code-example">
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">color</span><span class="css-symbol">:</span> <span class="css-value">#fff</span><span class="css-symbol">;</span>
+<span class="css-property">text-shadow</span><span class="css-symbol">:</span> <span class="css-value">1px 1px #32557f</span><span class="css-symbol">,</span>
+             <span class="css-value">1px -1px #32557f</span><span class="css-symbol">,</span>
+             <span class="css-value">-1px 1px #32557f</span><span class="css-symbol">,</span>
+             <span class="css-value">-1px -1px #32557f</span><span class="css-symbol">,</span>
+             <span class="css-value">3px 3px 6px rgba(0,0,0,.5)</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Неоморфізм та Soft UI</h3>
+            </div>
+            <div class="section-content">
+                <p>Тіні CSS також активно використовуються в нейроморфному дизайні.</p>
+                <p>Нейоморфізм (також відомий як Neomorphism або Soft UI design) - це напрямок в дизайні, що означає створення 3D-подібних м'яких форм за допомогою властивості <span class="code-snippet">box-shadow</span>.</p>
+                <p>Неоморфний дизайн характеризується наступними особливостями:</p>
+                <ul>
+                    <li>Зазвичай це світлі відтінки сірого або відтінки, близькі до білого. Втім, ви можете використовувати будь-який колір, який вам подобається, і це все одно буде неоморфний дизайн.</li>
+                    <li>Зазвичай фон має той самий колір (або дуже схожий), що й елементи, які виглядають так, ніби вони пов'язані з фоном.</li>
+                    <li>Кути, як правило, закруглені.</li>
+                    <li>Тіні. Елементи мають дві тіні - зазвичай темну та білу.</li>
+                    <li>Зазвичай рамки відсутні. Однак елементи можуть мати додаткову тонку рамку, щоб зробити краї трохи гострішими та покращити контрастність.</li>
+                </ul>
+                <p>Ось приклад:</p>
+                <img src="https://sharkcoder.com/files/article/neumorphism-soft-ui-example.png" alt="example" class="code-example">
+                <p>По-перше, нам потрібно видалити межі і контур, а також застосувати інші загальні правила CSS до входів і кнопок:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-variable">$border_radius</span><span class="css-symbol">:</span> <span class="css-value">15px</span><span class="css-symbol">;</span>
+<span class="css-variable">$bgr-main</span><span class="css-symbol">:</span> <span class="css-value">#eee</span><span class="css-symbol">;</span>
+
+<span class="css-selector">input, .btn</span> <span class="css-symbol">{</span>
+    <span class="css-property">outline</span><span class="css-symbol">:</span> <span class="css-value">none</span><span class="css-symbol">;</span>
+    <span class="css-property">border-style</span><span class="css-symbol">:</span> <span class="css-value">none</span><span class="css-symbol">;</span>
+    <span class="css-property">border-radius</span><span class="css-symbol">:</span> <span class="css-variable">$border_radius</span><span class="css-symbol">;</span>
+    <span class="css-property">background-color</span><span class="css-symbol">:</span> <span class="css-variable">$bgr-main</span><span class="css-symbol">;</span>
+    <span class="css-property">padding</span><span class="css-symbol">:</span> <span class="css-value">10px 15px</span><span class="css-symbol">;</span>
+    <span class="css-property">width</span><span class="css-symbol">:</span> <span class="css-value">100%</span><span class="css-symbol">;</span>
+    <span class="css-property">height</span><span class="css-symbol">:</span> <span class="css-value">40px</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Далі нам потрібно додати <span class="code-snippet">box-shadow</span> до елементів: тінь буде вставленою, щоб зробити елементи порожнистими або втиснутими, або винесеною, щоб зробити елементи опуклими:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.inset</span> <span class="css-symbol">{</span>
+    <span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">inset -4px -4px 10px #fff</span><span class="css-symbol">,</span>
+                <span class="css-value">inset 4px 2px 12px #b9bbc4</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.outset</span> <span class="css-symbol">{</span>
+    <span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">5px 5px 10px #b9bbc4</span><span class="css-symbol">,</span>
+                <span class="css-value">-5px -5px 12px #fff</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Ми також можемо трохи змінити тінь кнопки входу, щоб покращити контрастність при наведенні:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.login-btn:hover</span> <span class="css-symbol">{</span>
+    <span class="css-property">box-shadow</span><span class="css-symbol">:</span> <span class="css-value">5px 5px 5px #b9bbc4</span><span class="css-symbol">,</span>
+                <span class="css-value">-5px -5px 5px #fff</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/sharkcoder/pen/abZadZN" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.html" class="footer-logo"><img src="img/common/logo.svg" alt="logo"></a>
+        <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
