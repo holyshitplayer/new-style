@@ -1,5 +1,32 @@
 section
     padding-top: 64px
+    &.article
+        width: 50%
+        margin: 0 auto
+        .section-content
+            display: flex
+            flex-direction: column
+            gap: 16px
+            .code-example
+                align-self: center
+                max-width: 100%
+                max-height: 512px
+                object-fit: contain
+                box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.1)
+                border-radius: 8px
+            .code-snippet
+                font-family: monospace
+                font-size: 16px
+                background-color: rgba(0,0,0,.1)
+                border-radius: 8px
+                padding: 4px 6px
+    ul
+        list-style-type: disc
+        margin-inline-start: 1em
+        display: flex
+        flex-direction: column
+        line-height: 24px
+        gap: 6px
 
 .section-header
     display: flex
@@ -10,8 +37,8 @@ section
     margin-bottom: 32px
 
 .section-title
-    text-transform: uppercase
     letter-spacing: 1.2px
+    text-transform: uppercase
     +bold
 
 .section-description

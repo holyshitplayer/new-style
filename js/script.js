@@ -14,7 +14,7 @@ copyButtons.forEach(copyButton => {
     copyButton.addEventListener("click", e => {
         e.preventDefault();
 
-        const codeBlock = copyButton.parentElement.querySelector(".code > pre");
+        const codeBlock = copyButton.parentElement.querySelector("pre.code");
         navigator.clipboard.writeText(codeBlock.textContent);
         console.log(navigator.clipboard.readText());
     });

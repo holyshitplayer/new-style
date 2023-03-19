@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.min.css">
+</head>
+
+<body>
+
+    <header class="header small">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Головна</a></li>
+                    <li><a href="flexbox.html">Flexbox</a></li>
+                    <li><a href="grid.html">Grid Layout</a></li>
+                    <li><a href="animation.html">Анімація</a></li>
+                    <li><a href="shadows.html">Тінь</a></li>
+                    <li><a href="transform.html">Трансформації</a></li>
+                    <li><a href="media-queries.html">Медіа-запити</a></li>
+                </ul>
+            </nav>
+            <div class="title">
+                <h1 class="page-header small">Flexbox</h1>
+                <p class="page-description">
+                    Потужний інструмент для розміщення елементів на сторінці веб-сайту.
+                    <br>
+                    Динамічні, гнучкі, сучасні та адаптивні макети без використання складних таблиць і фреймів.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Коротко про Flexbox</h3>
+            </div>
+            <div class="section-content">
+                <p>CSS flexbox (Flexible Box Layout Module) - це модуль верстки, який складається з гнучкого
+                    контейнера (батьківського елемента) і гнучких елементів (дочірніх елементів). Флекс-елементи
+                    можуть бути організовані у вигляді рядка або стовпця, а вільний простір між ними можна
+                    розподілити різними способами.</p>
+                <p>За допомогою flexbox ви можете:</p>
+                <ul>
+                    <li>Автоматично масштабувати елементи (змінювати висоту або ширину) так, щоб вони
+                        заповнювали доступний простір</li>
+                    <li>Автоматично зменшувати або збільшувати елементи, щоб вони поміщалися в контейнер і не
+                        переповнювали його</li>
+                    <li>Змінювати порядок елементів</li>
+                    <li>Вирішити проблему горизонтального та вертикального центрування</li>
+                    <li>Створювати колонки однакової висоти</li>
+                    <li>Створювати нижній колонтитул, що прилипає до нижньої частини сторінки</li>
+                    <li>Проектувати навігаційні панелі</li>
+                    <li>І багато іншого</li>
+                </ul>
+                <img src="https://sharkcoder.com/files/article/flex1.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Створення Flex-контейнера</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">display: flex;</span> застосовується до контейнера,
+                    робить його блоковим елементом і вмикає гнучку верстку для всіх його прямих дочірніх
+                    елементів.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">flex</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p><span class="code-snippet">display: inline-flex;</span> працює так само. Тільки він створює
+                    контейнер як вбудований елемент.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">inline-flex</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Cтворення рядка або стовпця</h3>
+            </div>
+            <div class="section-content">
+                <p>Якщо ви хочете, щоб гнучкі елементи виглядали як рядок або стовпець, застосуйте до контейнера
+                    властивість <span class="code-snippet">flex-direction</span>.</p>
+                <p>Властивість <span class="code-snippet">flex-direction: row;</span> створить горизонтальний
+                    ряд. Рядок - це значення за замовчуванням.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">row</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_row.png" alt="example" class="code-example">
+                <p>Якщо у вас є більше елементів, які можуть поміститися в один рядок, але ви все одно хочете
+                    горизонтальне розташування, вам стане в нагоді властивість <span class="code-snippet">flex-wrap:
+                        wrap;</span>. Таким чином, гнучкі елементи розгорнуться
+                    на декілька рядків всередині гнучкого контейнера. Значення за замовчуванням - <span
+                        class="code-snippet">flex-wrap: nowrap;</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre  class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">flex</span><span class="css-symbol">;</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">row</span><span class="css-symbol">;</span>
+    <span class="css-property">flex-wrap</span><span class="css-symbol">:</span> <span class="css-value">wrap</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_wrap.png" alt="example" class="code-example">
+                <p>Щоб зробити вертикальну колонку, застосуйте до контейнера <span class="code-snippet">flex-напрямок:
+                        column;</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">column</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_column.png" alt="example" class="code-example">
+                <p>Існує скорочена назва для властивостей <span class="code-snippet">flex-direction</span> і
+                    <span class="code-snippet">flex-wrap</span> - <span class="code-snippet">flex-flow</span>.
+                    Значення за замовчуванням - <span class="code-snippet">nowrap</span> рядка.
+                </p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-flow</span><span class="css-symbol">:</span> <span class="css-value">row wrap</span><span class="css-symbol">;</span> <span class="css-comment">// flex-direction + flex-wrap</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Вирівнювання елементів по горизонталі</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб задати горизонтальне вирівнювання елементів, використовуйте властивість <span class="code-snippet">justify-content</span>. Вона може мати одне з наступних значень:</p>
+                <ul>
+                    <li><span class="code-snippet">flex-start</span>: товари пакуються до лівого боку контейнера (значення за замовчуванням)</li>
+                    <li><span class="code-snippet">flex-end</span>: товари упаковуються до правого боку контейнера</li>
+                    <li><span class="code-snippet">center</span>: елементи розміщуються по центру</li>
+                    <li><span class="code-snippet">space-between</span>: елементи рівномірно розподілені в рядку (перший елемент - зліва, останній - справа)</li>
+                    <li><span class="code-snippet">space-around</span>: елементи рівномірно розподілені в рядку з однаковим простором по обидва боки від них. Зверніть увагу, що візуально простір не є рівним, оскільки всі елементи мають однаковий простір з обох боків. Поля сусідніх гнучких елементів не згортаються. Перший елемент матиме одну одиницю простору від краю контейнера, але дві одиниці простору між наступними елементами, оскільки для кожного наступного елемента застосовується власний інтервал</li>
+                    <li><span class="code-snippet">space-evenly</span>: елементи розподіляються так, щоб відстань між будь-якими двома елементами (і відстань до країв) була однаковою</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">justify-content</span><span class="css-symbol">:</span> <span class="css-value">flex-start | flex-end | center | space-between | space-around | space-evenly</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_justify-content.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Вирівнювання елементів по вертикалі</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб вирівняти гнучкі елементи по вертикалі, скористайтеся властивостями <span class="code-snippet">align-items</span>, <span class="code-snippet">align-content</span> або <span class="code-snippet">align-self</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">align-items</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб визначити вертикальне вирівнювання декількох елементів, застосуйте до контейнера властивість <span class="code-snippet">align-items</span>. Ця властивість може мати одне з наступних значень:</p>
+                <ul>
+                    <li><span class="code-snippet">stretch</span>: елементи розтягуються, щоб заповнити контейнер, дотримуючись властивостей <span class="code-snippet">min-width</span> та <span class="code-snippet">max-width</span> (це значення за замовчуванням)</li>
+                    <li><span class="code-snippet">flex-start</span>: предмети розміщуються у верхній частині контейнера</li>
+                    <li><span class="code-snippet">flex-end</span>: предмети розміщуються в нижній частині контейнера</li>
+                    <li><span class="code-snippet">center</span>: предмети розташовуються по центру контейнера</li>
+                    <li><span class="code-snippet">baseline</span>: елементи вирівнюються, наприклад, їхні базові лінії вирівнюються</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">align-items</span><span class="css-symbol">:</span> <span class="css-value">stretch | flex-start | flex-end | center | baseline</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_align-items.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">align-content</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб визначити вертикальне вирівнювання декількох рядків елементів, використовуйте властивість <span class="code-snippet">align-content</span>. Ця властивість не має ефекту, якщо є лише один рядок гнучких елементів.</p>
+                <p>Ця властивість працює тільки при виконанні двох умов:</p>
+                <ul>
+                    <li>Значення <span class="code-snippet">обгортки</span> слід застосовувати до гнучкого контейнера</li>
+                    <li>Флекс-контейнер повинен бути вищим за лінії флекс-елементів</li>
+                </ul>
+                <p>Іншими словами, всередині контейнера має бути додатковий вертикальний простір, який повинен бути більшим, ніж сума висот усіх рядів елементів.</p>
+                <p>Ця властивість може мати одне з наступних значень:</p>
+                <ul>
+                    <li><span class="code-snippet">stretch</span>: лінії розтягуються, щоб зайняти весь доступний простір у контейнері (значення за замовчуванням)<span class="code-snippet">min-width</span> та <span class="code-snippet">max-width</span> (це значення за замовчуванням)</li>
+                    <li><span class="code-snippet">flex-start</span>: лінії розміщуються у верхній частині контейнера</li>
+                    <li><span class="code-snippet">flex-end</span>: лінії розміщуються в нижній частині контейнера</li>
+                    <li><span class="code-snippet">center</span>: лінії відцентровані посередині контейнера</li>
+                    <li><span class="code-snippet">space-between</span>: лінії рівномірно розподілені в контейнері</li>
+                    <li><span class="code-snippet">space-around</span>: лінії рівномірно розподілені з рівним пробілом навколо кожної лінії</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">align-content</span><span class="css-symbol">:</span> <span class="css-value">flex-start | flex-end | center | space-between | space-around | stretch</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_align-content.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">align-self</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб вирівняти окремі елементи по вертикалі, використовуйте властивість <span class="code-snippet">align-self</span>.  Вона застосовується до гнучких елементів, а не до гнучкого контейнера. Корисно перевизначити вирівнювання, вказане для гнучкого контейнера, за допомогою властивості <span class="code-snippet">align-items</span>.</p>
+                <p>Властивість <span class="code-snippet">align-self</span> може мати одне з наступних значень (ті самі, що й у випадку властивості <span class="code-snippet">align-items</span> плюс auto):</p>
+                <ul>
+                    <li><span class="code-snippet">auto</span>: дорівнює значенню, вказаному у властивості <span class="code-snippet">align-items</span> для гнучкого контейнера (значення за замовчуванням)</li>
+                    <li><span class="code-snippet">stretch</span>: елементи розтягуються, щоб заповнити контейнер, дотримуючись властивостей мінімальної та максимальної ширини</li>
+                    <li><span class="code-snippet">flex-start</span>: предмети розміщуються у верхній частині контейнера</li>
+                    <li><span class="code-snippet">flex-end</span>: предмети розміщуються в нижній частині контейнера</li>
+                    <li><span class="code-snippet">center</span>: предмети розташовуються по центру контейнера</li>
+                    <li><span class="code-snippet">baseline</span>: елементи вирівнюються, наприклад, їхні базові лінії вирівнюються</li>
+                </ul>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">align-self</span><span class="css-symbol">:</span> <span class="css-value">auto | stretch | flex-start | flex-end | center | baseline</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_align-self.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Зміна порядку елементів</h3>
+            </div>
+            <div class="section-content">
+                <p>Кілька властивостей дозволяють визначити порядок елементів флексу: <span class="code-snippet">order</span>, <span class="code-snippet">row-reverse</span>, <span class="code-snippet">column-reverse</span>, <span class="code-snippet">wrap-reverse</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">order</h3>
+            </div>
+            <div class="section-content">
+                <p>Щоб налаштувати порядок окремих гнучких елементів, використовуйте властивість <span class="code-snippet">order</span>. Вона застосовується до гнучких елементів.</p>
+                <p>За замовчуванням, всі flex-елементи мають <span class="code-snippet">order: 0;</span> значення. Якщо ви вказуєте значення -1 для елемента, він переміщується на початок рядка, а значення 1 - в кінець. Якщо кілька гнучких елементів мають однакове значення порядку, вони відображатимуться відповідно до початкового порядку.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">&lt;integer&gt;</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Порядок за замовчуванням:</p>
+                <img src="https://sharkcoder.com/files/article/flex_order1.png" alt="example" class="code-example">
+                <p>Зробити останній пункт першим:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item5</span> <span class="css-symbol">{</span>
+    <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">-1</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_order2.png" alt="example" class="code-example">
+                <p>Змінити порядок окремих елементів:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item1</span> <span class="css-symbol">{</span> <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">4</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item2</span> <span class="css-symbol">{</span> <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">3</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item3</span> <span class="css-symbol">{</span> <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item4</span> <span class="css-symbol">{</span> <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">5</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item5</span> <span class="css-symbol">{</span> <span class="css-property">order</span><span class="css-symbol">:</span> <span class="css-value">2</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_order3.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">row-reverse, column-reverse</h3>
+            </div>
+            <div class="section-content">
+                <p>Ви можете змінити порядок елементів. Щоб розташувати гнучкі елементи в рядку справа наліво, застосуйте властивість <span class="code-snippet">flex-direction: row-reverse;</span> до гнучкого контейнера.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">row-reverse</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_row-reverse.png" alt="example" class="code-example">
+                <p>Щоб розташувати гнучкі елементи у стовпчику знизу вгору, використовуйте властивість <span class="code-snippet">flex-direction: column-reverse;</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">column-reverse</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_column-reverse.png" alt="example" class="code-example">
+                <p>Замість <span class="code-snippet">flex-direction</span> ви можете вибрати коротшу властивість <span class="code-snippet">flex-flow</span> для застосування цих значень:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-flow</span><span class="css-symbol">:</span> <span class="css-value">row-reverse wrap</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-flow</span><span class="css-symbol">:</span> <span class="css-value">column-reverse nowrap</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">wrap-reverse</h3>
+            </div>
+            <div class="section-content">
+                <p>Існує також властивість <span class="code-snippet">flex-wrap: wrap-reverse;</span>, яка дозволяє обгортати гнучкі елементи на кілька рядків знизу вгору.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-wrap</span><span class="css-symbol">:</span> <span class="css-value">wrap-reverse</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_wrap-reverse.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">Збільшення або зменшення елементів</h3>
+            </div>
+            <div class="section-content">
+                <p>Гнучкість гнучких виробів визначається властивостями <span class="code-snippet">flex-basis</span>, <span class="code-snippet">flex-grow</span> і <span class="code-snippet">flex-shrink</span>.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">flex-basis</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">flex-basis</span> визначає розмір за замовчуванням для гнучкого елемента перед розподілом доступного простору. Ви можете задати абсолютне значення (наприклад, 200px або 10em), значення у відсотках (наприклад, 50%) або ключове слово (auto, content).</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex-basis</span><span class="css-symbol">:</span> <span class="css-value">&lt;length&gt; | auto | content</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+                <p>Властивість <span class="code-snippet">flex-basis</span> можна інтерпретувати як мінімальну ширину гнучкого елемента. Якщо ви вкажете значення <span class="code-snippet">flex-basis</span>, воно задасть ширину для конкретного елемента, але залежно від інших параметрів гнучкості, гнучкий елемент може стати ширшим (або вужчим) за значення <span class="code-snippet">flex-basis</span>.</p>
+                <p>Значення за замовчуванням - <span class="code-snippet">auto</span>. Воно отримує значення властивості <span class="code-snippet">width</span>. А значення content базується на вмісті гнучкого елемента.</p>
+                <p>Якщо ви не задасте значення <span class="code-snippet">ﬂex-basis</span> і встановите значення <span class="code-snippet">flex-grow</span> рівним 0, елемент буде стиснуто до мінімального розміру.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">flex-grow</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">flex-grow</span> застосовується до окремих гнучких елементів і визначає здатність гнучкого елемента рости. Вона диктує, яку частину доступного простору всередині гнучкого контейнера повинен займати елемент. Вона приймає значення без одиниці, яке слугує пропорцією. Значення за замовчуванням - 0, від'ємні числа не приймаються.</p>
+                <p>Якщо для всіх елементів встановлено значення <span class="code-snippet">flex-grow</span>, рівне 1, решту простору в контейнері буде розподілено порівну між усіма дочірніми елементами. Якщо значення <span class="code-snippet">flex-grow</span> для елемента встановлено на 2, він отримає у 2 рази більше пікселів до початкової ширини, ніж інші елементи зі значенням <span class="code-snippet">flex-grow</span> на 1.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.item1</span> <span class="css-symbol">{</span> <span class="css-property">flex-grow</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item2</span> <span class="css-symbol">{</span> <span class="css-property">flex-grow</span><span class="css-symbol">:</span> <span class="css-value">2</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item3</span> <span class="css-symbol">{</span> <span class="css-property">flex-grow</span><span class="css-symbol">:</span> <span class="css-value">3</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_grow.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">flex-shrink</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">flex-shrink</span> застосовується до гнучких елементів і вказує, наскільки кожен елемент буде зменшено, якщо не вистачає вільного місця. Вона приймає значення без одиниці, яке слугує пропорцією. Значення за замовчуванням - 1. 0 дозволяє зберегти початковий розмір елемента. Від'ємні значення є неприпустимими.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">.container</span> <span class="css-symbol">{</span> <span class="css-property">width</span><span class="css-symbol">:</span> <span class="css-value">700px</span><span class="css-symbol">;</span> <span class="css-property">padding</span><span class="css-symbol">:</span> <span class="css-value">20px</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+
+<span class="css-selector">.item1</span> <span class="css-symbol">{</span> <span class="css-property">flex-basis</span><span class="css-symbol">:</span> <span class="css-value">150px</span><span class="css-symbol">;</span> <span class="css-property">flex-shrink</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item2</span> <span class="css-symbol">{</span> <span class="css-property">flex-basis</span><span class="css-symbol">:</span> <span class="css-value">250px</span><span class="css-symbol">;</span> <span class="css-property">flex-shrink</span><span class="css-symbol">:</span> <span class="css-value">2</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+<span class="css-selector">.item3</span> <span class="css-symbol">{</span> <span class="css-property">flex-basis</span><span class="css-symbol">:</span> <span class="css-value">350px</span><span class="css-symbol">;</span> <span class="css-property">flex-shrink</span><span class="css-symbol">:</span> <span class="css-value">3</span><span class="css-symbol">;</span> <span class="css-symbol">}</span>
+</pre>
+                </div>
+                <img src="https://sharkcoder.com/files/article/flex_shrink.png" alt="example" class="code-example">
+            </div>
+        </div>
+    </section>
+
+    <section class="article">
+        <div class="container">
+            <div class="section-header">
+                <h3 class="section-title">flex</h3>
+            </div>
+            <div class="section-content">
+                <p>Властивість <span class="code-snippet">flex</span> - це скорочення для параметрів <span class="code-snippet">flex-grow</span>, <span class="code-snippet">flex-shrink</span> і <span class="code-snippet">flex-basis</span> разом узятих. Другий і третій параметри (flex-shrink і flex-basis) є необов'язковими.</p>
+                <p>Він може мати кілька значень:</p>
+                <ul>
+                    <li><span class="code-snippet">flex-grow flex-shrink flex-basis</span>: значення трьох властивостей разом узятих</li>
+                    <li><span class="code-snippet">none</span>: те саме, що і <span class="code-snippet">0 0 auto</span> (робить гнучкі елементи повністю негнучкими)</li>
+                    <li><span class="code-snippet">initial</span>: те саме, що <span class="code-snippet">0 1 auto</span> (значення за замовчуванням; воно базується на властивостях <span class="code-snippet">width</span> та <span class="code-snippet">height</span>)</li>
+                    <li><span class="code-snippet">auto</span>: так само, як <span class="code-snippet">1 1 auto</span> (базується на властивостях <span class="code-snippet">width</span> та <span class="code-snippet">height</span>, але робить гнучкі елементи повністю гнучкими)</li>
+                    <li><span class="code-snippet">&lt;positive number&gt;</span>: так само як <span class="code-snippet">&lt;positive number&gt; 1 0</span> (робить елемент flex гнучким і встановлює основу flex на нуль)</li>
+                </ul>
+                <p>Наприклад, <span class="code-snippet">flex: 1 1 300px;</span> ідентичний коду нижче:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">flex-grow</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span>
+<span class="css-property">flex-shrink</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span>
+<span class="css-property">flex-basis</span><span class="css-symbol">:</span> <span class="css-value">300px</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <p>А <span class="code-snippet">flex: 1;</span> ідентичний коду, наведеному нижче:</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-property">flex-grow</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span>
+<span class="css-property">flex-shrink</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span>
+<span class="css-property">flex-basis</span><span class="css-symbol">:</span> <span class="css-value">0%</span><span class="css-symbol">;</span>
+</pre>
+                </div>
+                <p>У наведеному вище прикладі ширина гнучкого елемента визначатиметься не його вмістом, а властивістю <span class="code-snippet">flex-grow</span>.</p>
+                <div class="code-block">
+                    <div class="circles">
+                        <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
+                        <img class="circle" src="img/code-block/circle-yellow.svg" alt="yellow circle">
+                        <img class="circle" src="img/code-block/circle-green.svg" alt="green circle">
+                    </div>
+                    <a href="#" class="copy-button"><img src="img/code-block/copy-icon.svg" alt="copy"></a>
+<pre class="code">
+<span class="css-selector">body</span> <span class="css-symbol">{</span>
+    <span class="css-property">display</span><span class="css-symbol">:</span> <span class="css-value">flex</span><span class="css-symbol">;</span>
+    <span class="css-property">flex-direction</span><span class="css-symbol">:</span> <span class="css-value">column</span><span class="css-symbol">;</span>
+    <span class="css-property">min-height</span><span class="css-symbol">:</span> <span class="css-value">100vh</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+
+<span class="css-selector">main</span> <span class="css-symbol">{</span>
+    <span class="css-property">flex</span><span class="css-symbol">:</span> <span class="css-value">1</span><span class="css-symbol">;</span>
+<span class="css-symbol">}</span>
+</pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <a href="index.html" class="footer-logo"><img src="img/common/logo.svg" alt="logo"></a>
+        <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
