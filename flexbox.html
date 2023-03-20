@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Flexbox</title>
     <link rel="shortcut icon" href="img/common/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="libs/mmenu-light/mmenu-light.css">
     <link rel="stylesheet" href="css/style.min.css">
 </head>
 
@@ -14,18 +15,22 @@
 
     <header class="header small">
         <div class="container">
-            <nav class="navbar">
+            <div class="menu">
                 <a href="index.html" class="header-logo"><img src="img/common/logo.svg" alt="logo"></a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Головна</a></li>
-                    <li><a href="flexbox.html">Flexbox</a></li>
-                    <li><a href="grid.html">Grid Layout</a></li>
-                    <li><a href="animations.html">Анімації</a></li>
-                    <li><a href="shadows.html">Тіні</a></li>
-                    <li><a href="transform.html">Трансформації</a></li>
-                    <li><a href="media-queries.html">Медіа-запити</a></li>
-                </ul>
-            </nav>
+                <a href="#" class="menu-open"><img src="img/common/menu-open.svg" alt="open menu"></a>
+                <nav class="navbar">
+                    <a href="#" class="menu-close"><img src="img/common/menu-close.svg" alt="close menu"></a>
+                    <ul class="nav-links">
+                        <li><a href="index.html">Головна</a></li>
+                        <li><a href="flexbox.html">Flexbox</a></li>
+                        <li><a href="grid.html">Grid Layout</a></li>
+                        <li><a href="animations.html">Анімації</a></li>
+                        <li><a href="shadows.html">Тіні</a></li>
+                        <li><a href="transform.html">Трансформації</a></li>
+                        <li><a href="media-queries.html">Медіа-запити</a></li>
+                    </ul>
+                </nav>
+            </div>
             <div class="title">
                 <h1 class="page-header small">Flexbox</h1>
                 <p class="page-description">
@@ -654,6 +659,7 @@
         <p class="footer-text">Lorem Ipsum - це текст-"риба", що використовується в друкарстві та дизайні.</p>
     </footer>
 
+    <script src="libs/mmenu-light/mmenu-light.js"></script>
     <script src="js/script.js"></script>
 </body>
 

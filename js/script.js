@@ -9,6 +9,30 @@ for (let i = 0; i < navLinks.length; i++) {
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const menu = new MmenuLight(
+        document.querySelector(".navbar"),
+        "(max-width: 992px)"
+    );
+
+    const navigator = menu.navigation({
+        theme: "light",
+        title: "Меню"
+    });
+
+    const drawer = menu.offcanvas();
+
+    document.querySelector(".menu-open").addEventListener("click", (e) => {
+        e.preventDefault();
+        drawer.open();
+    });
+
+    document.querySelector(".menu-close").addEventListener("click", (e) => {
+        e.preventDefault();
+        drawer.close();
+    });
+});
+
 const copyButtons = document.querySelectorAll(".copy-button");
 copyButtons.forEach(copyButton => {
     copyButton.addEventListener("click", e => {
