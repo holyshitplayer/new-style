@@ -61,7 +61,6 @@
                 <h3 class="section-title">Термінологія</h3>
             </div>
             <div class="section-content">
-                <img src="https://sharkcoder.com/files/article/grid_terminology.png" alt="example" class="code-example">
                 <p>Grid Container - це елемент, до якого застосовується display: grid;. Він є прямим батьком усіх елементів сітки.</p>
                 <p>Grid Item - це дочірні елементи (прямі нащадки), вкладені в батьківський контейнер сітки. Вони можуть бути будь-якими елементами і представляти собою заголовок, бічну панель, нижній колонтитул тощо.</p>
                 <p>Grid Lines - це розділові лінії, які утворюють структуру сітки. Вони можуть бути вертикальними (лінії сітки стовпців) або горизонтальними (лінії сітки рядків) і розташовуватися з обох боків рядка або стовпця.</p>
@@ -181,7 +180,7 @@
 </pre>
                 </div>
                 <p>Це створює три рядки з висотою 33,33% і три стовпчики з шириною 33,33%.</p>
-                <img src="https://sharkcoder.com/files/article/grid_template.png" alt="example" class="code-example">
+                <img src="img/grid/grid-template.svg" alt="example" class="code-example">
                 <p>Якщо ви хочете, щоб ширина або висота стовпців чи рядків залежали від розміру вмісту, використовуйте <span class="code-snippet">grid-template-columns: auto;</span> або <span class="code-snippet">grid-template-rows: auto;</span>.</p>
             </div>
         </div>
@@ -236,7 +235,7 @@
 </pre>
                 </div>
                 <p>Це створить сітку шириною 5 стовпців і висотою 4 рядки:</p>
-                <img src="https://sharkcoder.com/files/article/grid_areas.png" alt="example" class="code-example">
+                <img src="img/grid/grid-areas.svg" alt="example" class="code-example">
                 <p>"A" - це одна область на 3 клітинки вниз, а "B" - на 4 клітинки праворуч. CSS Grid автоматично розглядає їх як окремі блоки.</p>
                 <p>Ви можете використовувати крапку як значення площі сітки. Вона позначатиме порожню комірку сітки:</p>
                 <div class="code-block">
@@ -254,7 +253,7 @@
     <span class="css-value-string">". f g h ."</span><span class="css-symbol">;</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_areas_period.png" alt="example" class="code-example">
+                <img src="img/grid/grid-areas-period.svg" alt="example" class="code-example">
             </div>
         </div>
     </section>
@@ -398,9 +397,9 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid-auto-flow.png" alt="example" class="code-example">
+                <img src="img/grid/grid-auto-flow.svg" alt="example" class="code-example">
                 <p>Якщо ви встановите для параметра <span class="code-snippet">grid-auto-flow</span> значення <span class="code-snippet">dense</span>, прогалини будуть заповнені:</p>
-                <img src="https://sharkcoder.com/files/article/grid-auto-flow-dense.png" alt="example" class="code-example">
+                <img src="img/grid/grid-auto-flow-dense.svg" alt="example" class="code-example">
             </div>
         </div>
     </section>
@@ -429,7 +428,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid-gaps.png" alt="example" class="code-example">
+                <img src="img/grid/grid-gaps.svg" alt="example" class="code-example vertical">
                 <p>Ви можете використовувати grid-gap як скорочення для <span class="code-snippet">grid-row-gap</span> і <span class="code-snippet">grid-column-gap</span>.</p>
                 <div class="code-block">
                     <div class="circles">
@@ -488,7 +487,8 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_justify-items.png" alt="example" class="code-example">
+                <img src="img/grid/grid-justify-items-start-end.svg" alt="example" class="code-example">
+                <img src="img/grid/grid-justify-items-center-stretch.svg" alt="example" class="code-example">
             </div>
         </div>
     </section>
@@ -523,7 +523,9 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_justify-content.png" alt="example" class="code-example">
+                <img src="img/grid/grid-justify-content-start-end.svg" alt="example" class="code-example">
+                <img src="img/grid/grid-justify-content-center-space-between.svg" alt="example" class="code-example">
+                <img src="img/grid/grid-justify-content-space-around-evenly.svg" alt="example" class="code-example">
             </div>
         </div>
     </section>
@@ -554,7 +556,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_justify-self.png" alt="example" class="code-example">
+                <img src="img/grid/grid-justify-self.svg" alt="example" class="code-example vertical">
             </div>
         </div>
     </section>
@@ -596,7 +598,8 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_align-items.png" alt="example" class="code-example">
+                <img src="img/grid/grid-align-items-start-end.svg" alt="example" class="code-example">
+                <img src="img/grid/grid-align-items-center-stretch.svg" alt="example" class="code-example">
             </div>
         </div>
     </section>
@@ -631,7 +634,9 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_align-content.png" alt="example" class="code-example">
+                <img src="img/grid/grid-align-content-start-end.svg" alt="example" class="code-example">
+                <img src="img/grid/grid-align-content-center-space-between.svg" alt="example" class="code-example">
+                <img src="img/grid/grid-align-content-space-around-evenly.svg" alt="example" class="code-example">
             </div>
         </div>
     </section>
@@ -662,7 +667,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <img src="https://sharkcoder.com/files/article/grid_align-self.png" alt="example" class="code-example">
+                <img src="img/grid/grid-align-self.svg" alt="example" class="code-example vertical">
             </div>
         </div>
     </section>
