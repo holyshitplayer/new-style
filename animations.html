@@ -49,7 +49,7 @@
             </div>
             <div class="section-content">
                 <p>За останні 10 років продуктивність браузерів значно зросла. Раніше було набагато складніше додавати інтерактивну анімацію на веб-сторінки через потенційні проблеми з рендерингом і продуктивністю. Але сьогодні CSS-анімації можна використовувати набагато вільніше, а синтаксис, як правило, набагато простіше вивчити порівняно з такими функціями CSS, як <a href="flexbox.html">Flexbox</a> або <a href="grid.html">Grid Layout</a>.</p>
-                <p>Існують різні функції, які є частиною специфікації анімації W3C CSS. Деякі з них простіші у використанні, ніж інші. У цьому підручнику з анімації ключових кадрів CSS ми розглянемо весь синтаксис, включаючи кожну з різних властивостей. Я додам інтерактивні демонстрації, які допоможуть вам зрозуміти, що можливо за допомогою CSS-анімації.</p>
+                <p>Існують різні функції, які є частиною специфікації анімації W3C CSS. Деякі з них простіші у використанні, ніж інші.</p>
             </div>
         </div>
     </section>
@@ -60,7 +60,7 @@
                 <h3 class="section-title">Синтаксис @keyframes</h3>
             </div>
             <div class="section-content">
-                <p>Кожна CSS-анімація складається з двох частин: одна або декілька властивостей <span class="code-snippet">animation-*</span> разом з набором ключових кадрів анімації, які визначаються за допомогою правила <span class="code-snippet">@keyframes</span> як правило. Давайте детально розглянемо, що входить до складу набору правил <span class="code-snippet">@keyframes</span>.</p>
+                <p>Кожна CSS-анімація складається з двох частин: одна або декілька властивостей <span class="code-snippet">animation-*</span> разом з набором ключових кадрів анімації, які визначаються за допомогою правила <span class="code-snippet">@keyframes</span>.</p>
                 <p>Синтаксис виглядає наступним чином:</p>
                 <div class="code-block">
                     <div class="circles">
@@ -91,8 +91,8 @@
                     <li>Набір фігурних дужок, що обгортають усі ключові кадри</li>
                     <li>Один або кілька ключових кадрів, кожен з яких містить відсоток, за яким слідує набір правил, оточений фігурними дужками</li>
                 </ul>
-                <p>У цьому першому прикладі нашого підручника з CSS-анімації я визначив свою анімацію з назвою <span class="code-snippet">moveObject</span>. Це може бути будь-яка назва, чутлива до регістру, і вона має відповідати правилам створення користувацьких ідентифікаторів у CSS. Це користувацьке ім'я має збігатися з ім'ям, яке використовується у властивості <span class="code-snippet">animation-name</span> (про яку ми поговоримо пізніше).</p>
-                <p>У моєму прикладі ви помітите, що я використовував відсотки для визначення кожного ключового кадру в анімації. Якщо моя анімація містить ключові кадри, які дорівнюють <span class="code-snippet">0%</span> і <span class="code-snippet">100%</span>, я можу альтернативно використовувати ключові слова <span class="code-snippet">from</span> і <span class="code-snippet">to</span>:</p>
+                <p>У першому прикладі визначена анімація з назвою <span class="code-snippet">moveObject</span>. Це може бути будь-яка назва, чутлива до регістру, і вона має відповідати правилам створення користувацьких ідентифікаторів у CSS. Це користувацьке ім'я має збігатися з ім'ям, яке використовується у властивості <span class="code-snippet">animation-name</span> (про яку ми поговоримо пізніше).</p>
+                <p>У прикладі ви помітите, що використовуються відсотки для визначення кожного ключового кадру в анімації. Якщо анімація містить ключові кадри, які дорівнюють <span class="code-snippet">0%</span> і <span class="code-snippet">100%</span>, можна альтернативно використовувати ключові слова <span class="code-snippet">from</span> і <span class="code-snippet">to</span>:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -136,7 +136,7 @@
             </div>
             <div class="section-content">
                 <p>Як уже згадувалося, кожна CSS-анімація, яку ви створюєте, повинна мати ім'я, що з'являється в синтаксисі <span class="code-snippet">@keyframes</span>. Це ім'я має збігатися з ім'ям, визначеним за допомогою властивості <span class="code-snippet">animation-name</span>.</p>
-                <p>Використовуючи CSS з попередньої демонстрації, синтаксис виглядає наступним чином:</p>
+                <p>Використовуючи CSS код з попередньої демонстрації, синтаксис виглядає наступним чином:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -150,7 +150,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Знову ж таки, користувацьке ім'я, яке я визначив, має також існувати як ім'я для правила <span class="code-snippet">@keyframes</span> - інакше це ім'я нічого не робитиме. Ви можете думати про це як про виклик функції у JavaScript. Сама функція буде частиною коду <span class="code-snippet">@keyframes moveObject {}</span>, а виклик функції - <span class="code-snippet">animation-name: moveObject;</span>.</p>
+                <p>Знову ж таки, користувацьке ім'я, яке було визначене, має також існувати як ім'я для правила <span class="code-snippet">@keyframes</span> - інакше це ім'я нічого не робитиме. Ви можете думати про це як про виклик функції у JavaScript. Сама функція буде частиною коду <span class="code-snippet">@keyframes moveObject {}</span>, а виклик функції - <span class="code-snippet">animation-name: moveObject;</span>.</p>
                 <p>Деякі речі, які слід пам'ятати про <span class="code-snippet">animation-name</span>:</p>
                 <ul>
                     <li>Початкове значення параметра <span class="code-snippet">animation-name</span> - <span class="code-snippet">none</span>, що означає, що жоден ключовий кадр не активний. Це можна використовувати як своєрідний "перемикач" для вимкнення анімації.</li>
@@ -197,11 +197,9 @@
 </pre>
                 </div>
                 <p>Ви можете побачити властивість <span class="code-snippet">animation-duration</span> в дії в наступній демонстрації <a href="https://codepen.io/impressivewebs/pen/rNYNBwM" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a>. У цій демонстрації ви можете вибрати, як довго триватиме анімація.</p>
-                <p>Якщо ви використовуєте мале число разом з <span class="code-snippet">ms</span> для одиниці виміру, ви можете навіть не помітити жодного руху. Спробуйте встановити більше число, якщо ви використовуєте мілісекунди.</p>
                 <p>Кілька зауважень щодо використання <span class="code-snippet">animation-duration</span>:</p>
                 <ul>
                     <li>Від'ємні значення є неприпустимими</li>
-                    <li>Пристрій має бути увімкнений, навіть якщо тривалість встановлена на <span class="code-snippet">0s</span> (початкове значення)</li>
                     <li>Ви можете використовувати дробові значення (наприклад, <span class="code-snippet">0.8s</span>)</li>
                 </ul>
             </div>
@@ -214,7 +212,7 @@
                 <h3 class="section-title">animation-timing-function</h3>
             </div>
             <div class="section-content">
-                <p>Функція <span class="code-snippet">animation-timing-function</span>, яка не настільки очевидна за своїм значенням, як попередні дві властивості, використовується для визначення способу виконання CSS-анімації. Можливо, це не найзрозуміліше пояснення, але синтаксис може допомогти прояснити ситуацію.</p>
+                <p>Функція <span class="code-snippet">animation-timing-function</span> використовується для визначення способу виконання CSS-анімації.</p>
                 <p>Декларація виглядає так:</p>
                 <div class="code-block">
                     <div class="circles">
@@ -279,7 +277,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Початковим значенням для параметра <span class="code-snippet">animation-iteration-count</span> є 1, але ви також можете використати ключове слово <span class="code-snippet">infinite</span> (не потребує пояснень) або використати дробове значення. Дробове значення призведе до запуску анімації на половині шляху на дробовому прогоні:</p>
+                <p>Початковим значенням для параметра <span class="code-snippet">animation-iteration-count</span> є 1, але ви також можете використати ключове слово <span class="code-snippet">infinite</span> або використати дробове значення:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -306,7 +304,7 @@
                 <h3 class="section-title">animation-direction</h3>
             </div>
             <div class="section-content">
-                <p>Як згадувалося вище в цьому підручнику з CSS-анімації, властивість <span class="code-snippet">animation-direction</span> чудово працює в поєднанні з <span class="code-snippet">animation-iteration-count</span>. Властивість <span class="code-snippet">animation-direction</span> дозволяє вам визначити напрямок відтворення анімації. Синтаксис виглядає наступним чином:</p>
+                <p>Як згадувалося раніше, властивість <span class="code-snippet">animation-direction</span> чудово працює в поєднанні з <span class="code-snippet">animation-iteration-count</span>. Властивість <span class="code-snippet">animation-direction</span> дозволяє вам визначити напрямок відтворення анімації. Синтаксис виглядає наступним чином:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -393,7 +391,7 @@
                 <h3 class="section-title">animation-fill-mode</h3>
             </div>
             <div class="section-content">
-                <p>Останньою властивістю longhand, яку я розгляну в цьому підручнику з CSS-анімації, є та, яку я використовував у попередній демонстрації. Ви помітите, що коли анімація зупиняє останню ітерацію, поле залишається на місці. Це досягається за допомогою <span class="code-snippet">animation-fill-mode</span>.</p>
+                <p>Ви помітите, що коли анімація зупиняє останню ітерацію, поле залишається на місці. Це досягається за допомогою <span class="code-snippet">animation-fill-mode</span>.</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -407,7 +405,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Ця властивість визначає, як анімація застосовує стилі до цільового елемента до і після виконання. Це трохи складно зрозуміти концептуально, тому я поясню значення кожного значення, а потім ви зможете порівняти їх за допомогою інтерактивної демонстрації.</p>
+                <p>Ця властивість визначає, як анімація застосовує стилі до цільового елемента до і після виконання.</p>
                 <p>Ця властивість приймає наступні чотири значення ключових слів:</p>
                 <ul>
                     <li><span class="code-snippet">none</span>: стилі не застосовуються ні до, ні після виконання (за замовчуванням)</li>
@@ -415,7 +413,7 @@
                     <li><span class="code-snippet">backwards</span>: більш-менш протилежне попередньому значенню, воно зберігає стилі, застосовані до анімації, як тільки вона починає виконуватися, але до початку анімації</li>
                     <li><span class="code-snippet">both</span>: Зберігає стилі як для <span class="code-snippet">forwards</span>, так і для <span class="code-snippet">backwards</span></li>
                 </ul>
-                <p>Фінальна демонстрація на <a href="https://codepen.io/impressivewebs/pen/ZEaEMgg" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> в цьому посібнику з CSS-анімації зробить все трохи зрозумілішим, але може знадобитися багато часу, перш ніж ви дійсно зрозумієте, що вона робить і як цього досягти.</p>
+                <p>Демонстрація на <a href="https://codepen.io/impressivewebs/pen/ZEaEMgg" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> зробить все трохи зрозумілішим, але може знадобитися багато часу, перш ніж ви дійсно зрозумієте, що вона робить і як цього досягти.</p>
             </div>
         </div>
     </section>
@@ -440,7 +438,6 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Чесно кажучи, це дуже багато інформації в одному рядку. Я б рекомендував використовувати скорочення, якщо декларація включає не всі властивості, а лише три-чотири з них.</p>
                 <p>Якщо ви використовуєте скорочення, ви можете розташовувати значення в будь-якому порядку, але дотримуйтесь наступних правил:</p>
                 <ul>
                     <li>Перше значення, яке визначає час, - це <span class="code-snippet">animation-duration</span>; будь-яке наступне значення часу - це <span class="code-snippet">animation-delay</span>.</li>
@@ -472,7 +469,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Тут я визначив дві різні анімації, які відповідають двом різним наборам ключових кадрів, але застосовуються до одного й того ж об'єкта. Цей самий код можна написати від руки так:</p>
+                <p>Тут визначено дві різні анімації, які відповідають двом різним наборам ключових кадрів, але застосовуються до одного й того ж об'єкта. Цей самий код можна написати так:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">

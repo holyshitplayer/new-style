@@ -66,7 +66,7 @@
                 </div>
                 <p>Навіть із заявленими висотою і шириною, цей елемент тепер буде масштабовано в двадцять разів більше, ніж його початковий розмір:</p>
                 <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/team/css-tricks/pen/gpQYwO/d5d50055d95ceecbf94068e75a502c97" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
-                <p>Якщо надати цій функції два значення, то вона розтягнеться по горизонталі на перше, а по вертикалі - на друге. У наступному прикладі елемент тепер буде вдвічі ширшим, але вдвічі меншим за висоту від початкового елемента:</p>
+                <p>Якщо надати цій функції два значення, то вона розтягнеться по горизонталі на перше значення, а по вертикалі - на друге. У наступному прикладі елемент тепер буде вдвічі ширшим, але вдвічі меншим за висоту від початкового елемента:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -80,7 +80,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Або ви можете бути більш конкретними, не використовуючи функцію стенографії:</p>
+                <p>Або ви можете бути більш конкретними, не використовуючи функцію скорочення:</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
@@ -146,8 +146,8 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Функції перетворення <span class="code-snippet">skewX</span> і <span class="code-snippet">skewY</span> нахиляють елемент у той чи інший бік. Пам'ятайте: для нахилу елемента не існує властивості скорочення, тому вам доведеться використовувати обидві функції. У наведеному на <a href="https://codepen.io/team/css-tricks/pen/BNGMRy/cb9ab0a908241806e3eff88b57f15693" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> прикладі ми можемо нахилити квадрат розміром 100px x 100px вліво і вправо за допомогою <span class="code-snippet">skewX</span>:</p>
-                <p>У цьому на <a href="https://codepen.io/team/css-tricks/pen/jPQpzp/d7be823bca05649502f63fc8490c6d93" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> прикладі ми можемо нахилити елемент по вертикалі за допомогою <span class="code-snippet">skewY</span>:</p>
+                <p>Функції перетворення <span class="code-snippet">skewX</span> і <span class="code-snippet">skewY</span> нахиляють елемент у той чи інший бік. Пам'ятайте: для нахилу елемента не існує властивості скорочення, тому вам доведеться використовувати обидві функції. У наведеному на <a href="https://codepen.io/team/css-tricks/pen/BNGMRy/cb9ab0a908241806e3eff88b57f15693" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> прикладі ми можемо нахилити квадрат розміром 100px x 100px вліво і вправо за допомогою <span class="code-snippet">skewX</span>.</p>
+                <p>У цьому на <a href="https://codepen.io/team/css-tricks/pen/jPQpzp/d7be823bca05649502f63fc8490c6d93" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a> прикладі ми можемо нахилити елемент по вертикалі за допомогою <span class="code-snippet">skewY</span>.</p>
                 <p>Тепер використаємо <span class="code-snippet">skew()</span>, щоб об'єднати їх. <p>Результат цього коду ви можете переглянути на <a href="https://codepen.io/team/css-tricks/pen/povNBmQ" class="button inline" target="_blank" rel="noopener noreferrer">Codepen</a></p>
             </div>
         </div>
@@ -198,7 +198,7 @@
 <span class="css-symbol">}</span>
 </pre>
                 </div>
-                <p>Ця функція перетворення переміщує елемент убік або вгору і вниз. Чому б просто не використати верхній/лівий/нижній/правий? Ну, іноді це трохи заплутано. Я б вважав це компонуванням/позиціонуванням (вони все одно краще підтримуються браузерами), а це - способом переміщення цих елементів в рамках переходу або анімації.</p>
+                <p>Ця функція перетворення переміщує елемент убік або вгору і вниз. Чому б просто не використати верхній/лівий/нижній/правий? Ну, іноді це трохи заплутано. Можна вважати це компонуванням/позиціонуванням (вони все одно краще підтримуються браузерами), а це - способом переміщення цих елементів в рамках переходу або анімації.</p>
                 <p>Це можуть бути будь-які значення довжини, наприклад, 10px або 2.4em. Одне значення перемістить елемент праворуч (від'ємні значення - ліворуч). Якщо вказати друге значення, то воно перемістить його вниз (від'ємні значення вгору). Або ви можете бути більш конкретними:</p>
                 <div class="code-block">
                     <div class="circles">
@@ -251,7 +251,7 @@
                 <h3 class="section-title">matrix</h3>
             </div>
             <div class="section-content">
-                <p>Функція матричного перетворення може бути використана для об'єднання всіх перетворень в одне. Це схоже на стенографію перетворень, тільки я не думаю, що вона призначена для написання вручну. Існують інструменти, такі як <a href="http://meyerweb.com/eric/tools/matrix/" target="_blank" rel="noopener noreferrer">The Matrix Resolutions</a>, які можуть перетворити групу перетворень в одне оголошення матриці. Можливо, у деяких ситуаціях це може зменшити розмір файлу, хоча такі недружні до автора мікрооптимізації, швидше за все, не варті вашого часу.</p>
+                <p>Функція матричного перетворення може бути використана для об'єднання всіх перетворень в одне. Це схоже на скорочення перетворень, тільки напевно вона призначена для написання вручну. Існують інструменти, такі як <a href="http://meyerweb.com/eric/tools/matrix/" target="_blank" rel="noopener noreferrer">The Matrix Resolutions</a>, які можуть перетворити групу перетворень в одне оголошення матриці. Можливо, у деяких ситуаціях це може зменшити розмір файлу, хоча такі недружні до автора мікрооптимізації, швидше за все, не варті вашого часу.</p>
                 <p>Для допитливих - ось це:</p>
                 <div class="code-block">
                     <div class="circles">
@@ -299,7 +299,7 @@
 <span class="css-value">translateZ(z)</span><span class="css-symbol"></span>
 </pre>
                 </div>
-                <p>.Третє значення в <span class="code-snippet">translate3d</span> або значення в <span class="code-snippet">translateZ</span> переміщує елемент до глядача, від'ємні значення - від нього.</p>
+                <p>Третє значення в <span class="code-snippet">translate3d</span> або значення в <span class="code-snippet">translateZ</span> переміщує елемент до глядача, від'ємні значення - від нього.</p>
                 <div class="code-block">
                     <div class="circles">
                         <img class="circle" src="img/code-block/circle-red.svg" alt="red circle">
